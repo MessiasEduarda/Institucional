@@ -52,7 +52,8 @@ function useCountAnimation(end: number, duration: number = 2000, shouldStart: bo
 
     let cancelled = false
     
-    setHasAnimated(true)
+    queueMicrotask(() => setHasAnimated(true))
+
     let startTime: number | undefined
     const step = (timestamp: number) => {
       if (cancelled) return
