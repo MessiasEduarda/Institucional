@@ -33,10 +33,25 @@ export const LogoButton = styled.div`
   gap: 0.75rem;
   height: 120px;
   min-height: 120px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  user-select: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+
+  * {
+    cursor: pointer;
+  }
 `;
 
 export const LogoImage = styled.div`
-  width: 130px;
+  width: 170px;
   height: 70px;
   display: flex;
   align-items: center;
@@ -44,13 +59,15 @@ export const LogoImage = styled.div`
   border-radius: 0.5rem;
   overflow: hidden;
   flex-shrink: 0;
-  margin-left: -2.9rem;
+  margin-left: -4.2rem;
   margin-top: 2rem;
+  cursor: pointer;
 
   img {
     width: 35%;
     height: 100%;
     object-fit: contain;
+    cursor: pointer;
   }
 `;
 
@@ -61,8 +78,8 @@ interface LogoTextProps {
 
 export const LogoText = styled.div<LogoTextProps>`
   font-size: 1.5rem;
-  margin-top: 2.5rem;
-  margin-left: -2.5rem;
+  margin-top: 2rem;
+  margin-left: -3.8rem;
   font-weight: 700;
   color: #fff;
   display: flex;
@@ -71,6 +88,7 @@ export const LogoText = styled.div<LogoTextProps>`
   white-space: nowrap;
   font-family: var(--font-cabourg-bold);
   margin-bottom: -2rem;
+  cursor: pointer;
   
   animation: ${({ $show }) => ($show ? 'slideInFromLeft 0.4s ease-out forwards' : 'none')};
   opacity: ${({ $show }) => ($show ? '1' : '0')};
@@ -88,6 +106,7 @@ export const LogoText = styled.div<LogoTextProps>`
   
   span {
     font-size: 1.2rem;
+    cursor: pointer;
   }
 `;
 
@@ -186,7 +205,6 @@ export const Nav = styled.nav<NavProps>`
 export const Divider = styled.div`
   width: 90%;
   height: 1px;
-  background-color: #87E07E;
+  background-color: #333;
   margin: -2rem 0 1.5rem 0;
 `;
-

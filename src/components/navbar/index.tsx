@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { IoHomeOutline, IoInformationCircleOutline, IoBriefcaseOutline, IoMailOutline, IoSchoolOutline } from 'react-icons/io5';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import {
   LogoButton,
@@ -18,6 +18,7 @@ import {
 
 const Navbar = () => {
   const pathname = usePathname() ?? '';
+  const router = useRouter();
   const [expanded, setExpanded] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [showLogo, setShowLogo] = useState(false);
@@ -40,22 +41,26 @@ const Navbar = () => {
     setExpanded(false);
   };
 
+  const handleLogoClick = () => {
+    router.push('/inicio');
+  };
+
   return (
     <NavbarContainer
       $expanded={expanded}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <LogoButton>
+      <LogoButton onClick={handleLogoClick}>
         <LogoImage>
           <img 
-            src="/logo.jpg" 
+            src="/logo.png" 
             alt="Logo" 
           />
         </LogoImage>
         {showLogo && (
           <LogoText $expanded={expanded} $show={showLogo}>
-            <span style={{ color: '#000000' }}>E.E Maria Antonieta</span>
+            <span style={{ color: '#000000' }}>E.E Instituto Lumina</span>
           </LogoText>
         )}
       </LogoButton>
@@ -108,12 +113,12 @@ const Navbar = () => {
 
       <Divider />
 
-      <NavLink href="/contato" $selected={pathname.startsWith('/contato')}>
-        <NavLinkIcon $selected={pathname.startsWith('/contato')}>
+      <NavLink href="/contatos" $selected={pathname.startsWith('/contatos')}>
+        <NavLinkIcon $selected={pathname.startsWith('/contatos')}>
           <IoMailOutline />
         </NavLinkIcon>
         {showContent && (
-          <NavLinkText $selected={pathname.startsWith('/contato')}>
+          <NavLinkText $selected={pathname.startsWith('/contatos')}>
             Contatos
           </NavLinkText>
         )}

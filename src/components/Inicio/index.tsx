@@ -45,16 +45,13 @@ import {
 // Hook personalizado para animação de contagem
 function useCountAnimation(end: number, duration: number = 2000, shouldStart: boolean = false): number {
   const [count, setCount] = useState<number>(0)
-  const [hasAnimated, setHasAnimated] = useState<boolean>(false)
 
   useEffect(() => {
-    if (!shouldStart || hasAnimated) return
+    if (!shouldStart) return
 
     let cancelled = false
-    
-    queueMicrotask(() => setHasAnimated(true))
-
     let startTime: number | undefined
+
     const step = (timestamp: number) => {
       if (cancelled) return
       
@@ -64,7 +61,9 @@ function useCountAnimation(end: number, duration: number = 2000, shouldStart: bo
       
       // Easing function para suavizar a animação
       const easeOutQuart = 1 - Math.pow(1 - percentage, 4)
-      setCount(Math.floor(end * easeOutQuart))
+      const newCount = Math.floor(end * easeOutQuart)
+      
+      setCount(newCount)
 
       if (percentage < 1) {
         requestAnimationFrame(step)
@@ -78,7 +77,7 @@ function useCountAnimation(end: number, duration: number = 2000, shouldStart: bo
     return () => {
       cancelled = true
     }
-  }, [end, duration, shouldStart, hasAnimated])
+  }, [end, duration, shouldStart])
 
   return count
 }
@@ -98,11 +97,11 @@ function AnimatedStatCard({ endNumber, label, suffix = '' }: AnimatedStatCardPro
     const currentRef = cardRef.current
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !isVisible) {
           setIsVisible(true)
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     )
 
     if (currentRef) {
@@ -114,7 +113,7 @@ function AnimatedStatCard({ endNumber, label, suffix = '' }: AnimatedStatCardPro
         observer.unobserve(currentRef)
       }
     }
-  }, [])
+  }, [isVisible])
 
   const count = useCountAnimation(endNumber, 2000, isVisible)
 
@@ -145,7 +144,7 @@ export default function Inicio() {
               Formando cidadãos preparados para o amanhã através de uma educação 
               inovadora, tecnológica e humanizada.
             </Subtitle>
-            <CTAButton href="#contato">Agende uma Visita</CTAButton>
+            <CTAButton href="/contatos">Agende uma Visita</CTAButton>
           </HeroContent>
         </Hero>
 
@@ -339,7 +338,7 @@ export default function Inicio() {
           <GalleryGrid>
             <GalleryItem>
               <img 
-                src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop" 
+                src="https://www.dombosco.com.br/content/dam/region-growth/brazil/dom-bosco/images/noticias/incentivar-alunos-bibliotecas.jpg" 
                 alt="Biblioteca moderna"
               />
               <div className="overlay">
@@ -349,7 +348,7 @@ export default function Inicio() {
             </GalleryItem>
             <GalleryItem>
               <img 
-                src="https://images.unsplash.com/photo-1581092583537-20d51876f4f7?w=600&h=400&fit=crop" 
+                src="https://atelieurbano.com.br/wp-content/uploads/2023/08/arquitetura-para-laboratorio-de-escola-04.jpg" 
                 alt="Laboratório de ciências"
               />
               <div className="overlay">
@@ -359,7 +358,7 @@ export default function Inicio() {
             </GalleryItem>
             <GalleryItem>
               <img 
-                src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=600&h=400&fit=crop" 
+                src="https://donaclara.com.br/blog/wp-content/uploads/2022/03/esporte-na-escola_01.jpg" 
                 alt="Quadra esportiva"
               />
               <div className="overlay">
@@ -426,8 +425,8 @@ export default function Inicio() {
               Venha descobrir como podemos fazer a diferença na educação do seu filho.
             </CTAText>
             <CTAButtons>
-              <PrimaryButton href="#agenda">Agendar Visita</PrimaryButton>
-              <SecondaryButton href="#matricula">Processo de Matrícula</SecondaryButton>
+              <PrimaryButton href="/contatos">Agendar Visita</PrimaryButton>
+              <SecondaryButton href="/alunos">Processo de Matrícula</SecondaryButton>
             </CTAButtons>
           </CTAContent>
         </CTASection>

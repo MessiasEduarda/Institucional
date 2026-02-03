@@ -55,42 +55,39 @@ import {
 // Hook para animação de contagem
 function useCountAnimation(end: number, duration: number = 2000, shouldStart: boolean = false): number {
   const [count, setCount] = useState<number>(0)
-  const [hasAnimated, setHasAnimated] = useState<boolean>(false)
 
   useEffect(() => {
-    if (!shouldStart || hasAnimated) return
+    if (!shouldStart) return
 
     let cancelled = false
-    queueMicrotask(() => setHasAnimated(true))
+    let startTime: number | undefined
 
-    
-    const startTime = Date.now()
-    
-    const animate = () => {
+    const step = (timestamp: number) => {
       if (cancelled) return
       
-      const now = Date.now()
-      const progress = Math.min((now - startTime) / duration, 1)
+      if (!startTime) startTime = timestamp
+      const progress = timestamp - startTime
+      const percentage = Math.min(progress / duration, 1)
       
       // Easing function para suavizar a animação
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4)
-      const currentCount = Math.floor(end * easeOutQuart)
+      const easeOutQuart = 1 - Math.pow(1 - percentage, 4)
+      const newCount = Math.floor(end * easeOutQuart)
       
-      setCount(currentCount)
+      setCount(newCount)
 
-      if (progress < 1) {
-        requestAnimationFrame(animate)
+      if (percentage < 1) {
+        requestAnimationFrame(step)
       } else {
         setCount(end)
       }
     }
 
-    requestAnimationFrame(animate)
+    requestAnimationFrame(step)
 
     return () => {
       cancelled = true
     }
-  }, [end, duration, shouldStart, hasAnimated])
+  }, [end, duration, shouldStart])
 
   return count
 }
@@ -110,11 +107,11 @@ function AnimatedStatCard({ endNumber, label, suffix = '' }: AnimatedStatCardPro
     const currentRef = cardRef.current
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !isVisible) {
           setIsVisible(true)
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     )
 
     if (currentRef) {
@@ -126,7 +123,7 @@ function AnimatedStatCard({ endNumber, label, suffix = '' }: AnimatedStatCardPro
         observer.unobserve(currentRef)
       }
     }
-  }, [])
+  }, [isVisible])
 
   const count = useCountAnimation(endNumber, 2000, isVisible)
 
