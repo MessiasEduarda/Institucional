@@ -123,7 +123,7 @@ export default function Footer() {
                 </FooterContactIcon>
                 <FooterContactText>
                   <FooterContactLabel>Atendimento</FooterContactLabel>
-                  <FooterContactValue>Seg–Sex: 7h às 17h</FooterContactValue>
+                  <FooterContactValue>Seg–Sex: 8h às 17h</FooterContactValue>
                 </FooterContactText>
               </FooterContactItem>
 

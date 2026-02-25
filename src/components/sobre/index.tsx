@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
+import ExternalLinks from '@/components/ExternalLinks'
 import { 
   Container, 
   Hero, 
@@ -351,6 +352,15 @@ export default function Sobre() {
           </TimelineContainer>
         </TimelineSection>
 
+        <Section style={{ padding: '3rem 2rem' }}>
+          <ExternalLinks
+            title="Nossa Rede Institucional"
+            subtitle="Órgãos e entidades que integram a rede pública de ensino"
+            show={['seduc', 'ure', 'govestadual']}
+            columns={3}
+          />
+        </Section>
+
         {/* Missão, Visão e Valores */}
         <ValuesSection>
           <SectionTitle>Missão, Visão e Valores</SectionTitle>
@@ -407,7 +417,7 @@ export default function Sobre() {
 
         {/* Equipe de Gestão - CARROSSEL PROFISSIONAL */}
         <TeamSection>
-          <SectionTitle>Nossa Liderança</SectionTitle>
+          <SectionTitle>Equipe Gestora</SectionTitle>
           <SectionSubtitle>
             Profissionais dedicados à excelência educacional
           </SectionSubtitle>

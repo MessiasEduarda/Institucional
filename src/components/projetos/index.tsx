@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
+import ExternalLinks from '@/components/ExternalLinks'
 import { 
   Container, 
   Hero, 
@@ -63,7 +64,7 @@ import {
   CTAButton
 } from './styles'
 
-const categories = ['Todos', 'Ciências', 'Tecnologia', 'Artes', 'Sustentabilidade', 'Cidadania']
+const categories = ['Todos', 'Ciências', 'Tecnologia', 'Artes', 'Sustentabilidade', 'Esporte']
 
 const projects = [
   {
@@ -108,11 +109,11 @@ const projects = [
   },
   {
     id: 5,
-    category: 'Cidadania',
-    title: 'Ação Social Comunitária',
-    description: 'Voluntariado e projetos de impacto social em comunidades do entorno da escola.',
-    image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop',
-    tags: ['Voluntariado', 'Comunidade', 'Empatia'],
+    category: 'Esporte',
+    title: 'Campeonatos Interescolares',
+    description: 'Competições esportivas entre escolas da rede pública em futsal, vôlei e basquete, promovendo fair play, espírito de equipe e representação da escola.',
+    image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&h=600&fit=crop',
+    tags: ['Esporte', 'Fair Play', 'Competição'],
     year: '2024',
     participants: '120 alunos'
   },
@@ -178,6 +179,7 @@ export default function Projetos() {
     <>
       <Navbar />
       <Container>
+
         {/* Hero Section */}
         <Hero>
           <HeroImage>
@@ -447,6 +449,17 @@ export default function Projetos() {
             </CTAButton>
           </CTAContent>
         </CTASection>
+
+        {/* Links Externos — Saiba Mais */}
+        <Section style={{ background: '#f8f9fa', padding: '3rem 2rem' }}>
+          <ExternalLinks
+            title="Saiba Mais"
+            subtitle="Acompanhe nossos projetos e plataformas"
+            show={['instagram', 'salafuturo']}
+            columns={2}
+          />
+        </Section>
+
       </Container>
       <Footer />
     </>

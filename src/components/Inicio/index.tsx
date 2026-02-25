@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
+import ExternalLinks from '@/components/ExternalLinks'
 import { 
   Container, 
   Hero, 
@@ -47,7 +48,14 @@ export default function Inicio() {
             </Subtitle>
           </HeroContent>
         </Hero>
-
+        <Section style={{ background: '#f8f9fa', padding: '3rem 2rem' }}>
+          <ExternalLinks
+            title="Acesso Rápido"
+            subtitle="Links úteis para alunos, responsáveis e comunidade escolar"
+            show={['sptrans', 'govbr', 'govestadual', 'instagram']}
+            columns={4}
+          />
+        </Section>
         {/* Diferenciais Section */}
         <Section>
           <SectionTitle>Nossos Diferenciais</SectionTitle>

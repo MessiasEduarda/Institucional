@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
+import ExternalLinks from '@/components/ExternalLinks'
 import { 
   Container, 
   Hero, 
@@ -223,6 +224,7 @@ export default function Alunos() {
     <>
       <Navbar />
       <Container>
+
         {/* Hero Section */}
         <Hero>
           <HeroImage>
@@ -316,6 +318,7 @@ export default function Alunos() {
           </TabNavigation>
 
           <TabContent>
+
             {/* ANOS FINAIS */}
             <TabPanel $active={activeTab === 'anosfinais'}>
               <BenefitsGrid>
@@ -501,6 +504,7 @@ export default function Alunos() {
                 </BenefitCard>
               </BenefitsGrid>
             </TabPanel>
+
           </TabContent>
         </TabSection>
 
@@ -664,6 +668,16 @@ export default function Alunos() {
           </ResourcesGrid>
         </ResourcesSection>
 
+        {/* Links Úteis para Alunos */}
+        <Section style={{ background: '#f0f7f0', padding: '3rem 2rem' }}>
+          <ExternalLinks
+            title="Links Úteis para Alunos"
+            subtitle="Acesse os principais serviços e recursos da rede pública"
+            show={['apostilas', 'salafuturo', 'sptrans', 'cras', 'universidades', 'instagram']}
+            columns={3}
+          />
+        </Section>
+
         {/* Student Life */}
         <StudentLifeSection>
           <SectionTitle>Vida na Escola</SectionTitle>
@@ -723,22 +737,24 @@ export default function Alunos() {
               </LifeContent>
             </LifeCard>
 
+            {/* ← CARD ATUALIZADO: Campeonatos Interescolares */}
             <LifeCard>
               <LifeImageContainer>
                 <img 
-                  src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop" 
-                  alt="Ações Sociais"
+                  src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop" 
+                  alt="Campeonatos Interescolares"
                 />
               </LifeImageContainer>
               <LifeContent>
-                <LifeTitle>Campanhas e Ações Solidárias</LifeTitle>
+                <LifeTitle>Campeonatos Interescolares</LifeTitle>
                 <LifeDescription>
-                  Campanhas de arrecadação, ações comunitárias e projetos de cidadania 
-                  que incentivam os alunos a se engajar com a realidade ao redor 
-                  e cuidar do próximo.
+                  Competições esportivas entre escolas da rede pública em modalidades 
+                  como futsal, vôlei e basquete. Os campeonatos promovem fair play, 
+                  espírito de equipe e representação da nossa escola com orgulho.
                 </LifeDescription>
               </LifeContent>
             </LifeCard>
+
           </LifeGrid>
         </StudentLifeSection>
 
@@ -881,6 +897,7 @@ export default function Alunos() {
             </CTAButtons>
           </CTAContent>
         </CTASection>
+
       </Container>
       <Footer />
     </>
