@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
 import { 
   Container, 
   Hero, 
@@ -9,7 +10,6 @@ import {
   HeroImage,
   Title, 
   Subtitle, 
-  CTAButton,
   Section,
   SectionTitle,
   SectionSubtitle,
@@ -21,21 +21,9 @@ import {
   ImageSection,
   ImageContent,
   TextContent,
-  TestimonialSection,
-  TestimonialCard,
-  TestimonialText,
-  TestimonialAuthor,
-  TestimonialRole,
   GallerySection,
   GalleryGrid,
   GalleryItem,
-  CTASection,
-  CTAContent,
-  CTATitle,
-  CTAText,
-  CTAButtons,
-  PrimaryButton,
-  SecondaryButton
 } from './styles'
 
 export default function Inicio() {
@@ -47,26 +35,22 @@ export default function Inicio() {
         <Hero>
           <HeroImage>
             <img 
-              src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1920&h=1080&fit=crop" 
+              src="/fundo.jpeg" 
               alt="Estudantes em sala de aula moderna"
             />
           </HeroImage>
           <HeroContent>
-            <Title>Escola Futuro</Title>
+            <Title>PEI E.E MARIA ANTONIETA FERRAZ BIBLIOTECARIA</Title>
             <Subtitle>
               Formando cidadãos preparados para o amanhã através de uma educação 
               inovadora, tecnológica e humanizada.
             </Subtitle>
-            <CTAButton href="/contatos">Agende uma Visita</CTAButton>
           </HeroContent>
         </Hero>
 
         {/* Diferenciais Section */}
         <Section>
           <SectionTitle>Nossos Diferenciais</SectionTitle>
-          <SectionSubtitle>
-            O que torna a Escola Futuro única na formação de jovens protagonistas
-          </SectionSubtitle>
           <Grid>
             <Card>
               <CardIcon>
@@ -176,9 +160,7 @@ export default function Inicio() {
         {/* Segmentos de Ensino */}
         <Section style={{ background: '#f8f9fa' }}>
           <SectionTitle>Segmentos de Ensino</SectionTitle>
-          <SectionSubtitle>
-            Da educação infantil ao ensino médio, acompanhamos cada fase do desenvolvimento
-          </SectionSubtitle>
+          
           <Grid $columns={3}>
             <Card>
               <img 
@@ -190,6 +172,30 @@ export default function Inicio() {
               <CardDescription>
                 Do 6º ao 9º ano. Base sólida em todas as disciplinas com metodologias 
                 ativas, projetos interdisciplinares e desenvolvimento de competências.
+              </CardDescription>
+            </Card>
+            <Card>
+              <img 
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop" 
+                alt="Ensino Médio"
+                style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1.5rem' }}
+              />
+              <CardTitle>Ensino Médio</CardTitle>
+              <CardDescription>
+                Do 1º ao 3º ano. Preparação completa para o ENEM e vestibulares, 
+                com foco no desenvolvimento crítico e protagonismo juvenil.
+              </CardDescription>
+            </Card>
+            <Card>
+              <img 
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop" 
+                alt="Ensino Técnico"
+                style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1.5rem' }}
+              />
+              <CardTitle>Ensino Técnico</CardTitle>
+              <CardDescription>
+                Formação profissional integrada ao ensino médio, preparando os 
+                alunos para o mercado de trabalho com habilidades práticas e técnicas.
               </CardDescription>
             </Card>
           </Grid>
@@ -264,59 +270,8 @@ export default function Inicio() {
             </GalleryItem>
           </GalleryGrid>
         </GallerySection>
-
-        {/* Depoimentos */}
-        <TestimonialSection>
-          <SectionTitle>O Que Dizem Sobre Nós</SectionTitle>
-          <SectionSubtitle>
-            Depoimentos de famílias que confiam na Escola Futuro
-          </SectionSubtitle>
-          <Grid $columns={3}>
-            <TestimonialCard>
-              <TestimonialText>
-                &quot;A Escola Futuro transformou a vida da minha filha. Ela desenvolveu 
-                não apenas conhecimento acadêmico, mas também valores e habilidades 
-                para a vida. Estamos muito satisfeitos!&quot;
-              </TestimonialText>
-              <TestimonialAuthor>Maria Silva</TestimonialAuthor>
-              <TestimonialRole>Mãe de aluna do 8º ano</TestimonialRole>
-            </TestimonialCard>
-            <TestimonialCard>
-              <TestimonialText>
-                &quot;O acompanhamento individualizado e a metodologia inovadora fazem 
-                toda a diferença. Meu filho passou a amar estudar e está muito mais 
-                confiante e preparado para o futuro.&quot;
-              </TestimonialText>
-              <TestimonialAuthor>João Santos</TestimonialAuthor>
-              <TestimonialRole>Pai de aluno do 2º ano EM</TestimonialRole>
-            </TestimonialCard>
-            <TestimonialCard>
-              <TestimonialText>
-                &quot;A estrutura da escola é excelente e o corpo docente é extremamente 
-                qualificado. Nossos filhos estão tendo uma formação completa, com 
-                ética e responsabilidade social.&quot;
-              </TestimonialText>
-              <TestimonialAuthor>Ana e Carlos Oliveira</TestimonialAuthor>
-              <TestimonialRole>Pais de alunos do 5º e 9º ano</TestimonialRole>
-            </TestimonialCard>
-          </Grid>
-        </TestimonialSection>
-
-        {/* CTA Final */}
-        <CTASection id="contato">
-          <CTAContent>
-            <CTATitle>Faça Parte da Família Escola Futuro</CTATitle>
-            <CTAText>
-              Agende uma visita e conheça nossa estrutura, metodologia e equipe. 
-              Venha descobrir como podemos fazer a diferença na educação do seu filho.
-            </CTAText>
-            <CTAButtons>
-              <PrimaryButton href="/contatos">Agendar Visita</PrimaryButton>
-              <SecondaryButton href="/alunos">Processo de Matrícula</SecondaryButton>
-            </CTAButtons>
-          </CTAContent>
-        </CTASection>
       </Container>
+      <Footer />
     </>
   )
 }

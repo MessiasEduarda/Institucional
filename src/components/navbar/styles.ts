@@ -7,7 +7,7 @@ interface NavbarContainerProps {
 
 export const NavbarContainer = styled.div<NavbarContainerProps>`
   height: 500px;
-  width: ${({ $expanded }) => ($expanded ? '265px' : '80px')};
+  width: ${({ $expanded }) => ($expanded ? '235px' : '80px')};
   background-color: #ffffff;
   box-shadow: 0px 4px 16px 0px #00000029;
   padding: 1.5rem 0;
@@ -40,10 +40,6 @@ export const LogoButton = styled.div`
   cursor: pointer;
   transition: opacity 0.2s;
   user-select: none;
-
-  &:hover {
-    opacity: 0.8;
-  }
 
   &:active {
     opacity: 0.6;

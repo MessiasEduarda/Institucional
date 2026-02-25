@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
 import { 
   Container, 
   Hero, 
@@ -92,45 +93,45 @@ import {
 } from './styles'
 
 const tabs = [
-  { id: 'infantil', label: 'Educação Infantil' },
-  { id: 'fundamental', label: 'Ensino Fundamental' },
-  { id: 'medio', label: 'Ensino Médio' }
+  { id: 'anosfinais', label: 'Anos Finais' },
+  { id: 'medio', label: 'Ensino Médio' },
+  { id: 'tecnico', label: 'Ensino Técnico' }
 ]
 
 const activities = [
   {
     id: 1,
     category: 'Esportes',
-    title: 'Natação e Esportes Aquáticos',
-    description: 'Aulas de natação em piscina olímpica com instrutores certificados. Desenvolvimento físico, coordenação motora e disciplina.',
+    title: 'Educação Física e Esportes',
+    description: 'Aulas de educação física com práticas esportivas coletivas como futsal, vôlei e basquete. Desenvolvimento da saúde, do trabalho em equipe e da disciplina.',
     image: 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=1200&h=800&fit=crop'
   },
   {
     id: 2,
     category: 'Arte e Cultura',
-    title: 'Teatro e Artes Cênicas',
-    description: 'Oficinas de teatro, expressão corporal e produção de espetáculos. Desenvolvimento da criatividade e confiança.',
+    title: 'Aulas de Arte',
+    description: 'Atividades de artes visuais integradas ao currículo escolar. Os alunos exploram diferentes formas de expressão artística orientados pelos professores.',
     image: 'https://images.unsplash.com/photo-1503095396549-807759245b35?w=1200&h=800&fit=crop'
   },
   {
     id: 3,
     category: 'Tecnologia',
-    title: 'Robótica e Programação',
-    description: 'Criação de robôs, desenvolvimento de games e aplicativos. Pensamento computacional e resolução de problemas.',
+    title: 'Sala de Informática',
+    description: 'Uso da sala de informática para pesquisas, atividades digitais e iniciação à tecnologia, com acesso supervisionado e orientado pelos professores.',
     image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1200&h=800&fit=crop'
   },
   {
     id: 4,
-    category: 'Música',
-    title: 'Aulas de Instrumentos',
-    description: 'Violão, piano, bateria, flauta e canto. Desenvolvimento musical com professores especializados.',
+    category: 'Projetos',
+    title: 'Feiras e Mostras Escolares',
+    description: 'Feiras de ciências e mostras culturais organizadas pelos alunos com apoio dos professores, estimulando a pesquisa e o protagonismo estudantil.',
     image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1200&h=800&fit=crop'
   },
   {
     id: 5,
-    category: 'Idiomas',
-    title: 'Clubes de Conversação',
-    description: 'Inglês, espanhol e francês. Prática conversacional em ambiente imersivo e descontraído.',
+    category: 'Leitura',
+    title: 'Biblioteca e Leitura',
+    description: 'Acesso ao acervo da biblioteca escolar com empréstimo de livros, espaço para estudo e atividades de incentivo à leitura ao longo do ano letivo.',
     image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200&h=800&fit=crop'
   }
 ]
@@ -139,21 +140,21 @@ const testimonials = [
   {
     name: 'Julia Martins',
     grade: '3º ano do Ensino Médio',
-    text: 'A escola me proporcionou oportunidades incríveis! Participei de olimpíadas científicas, projetos de robótica e fiz amizades que vou levar pra vida toda.',
+    text: 'A escola me ajudou muito a me preparar para o ENEM. Os professores são dedicados e sempre dispostos a tirar dúvidas. Me sinto bem aqui.',
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop',
     rating: 5
   },
   {
     name: 'Pedro Henrique',
-    grade: '8º ano do Fundamental',
-    text: 'Amo as atividades extracurriculares! Faço natação, teatro e programação. Os professores são super atenciosos e a estrutura é incrível.',
+    grade: '8º ano — Anos Finais',
+    text: 'Gosto muito das aulas de educação física e dos projetos que a escola faz. Os professores explicam bem e o ambiente é bom para estudar.',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop',
     rating: 5
   },
   {
     name: 'Maria Eduarda',
-    grade: '5º ano do Fundamental',
-    text: 'A escola é muito legal! Tenho muitos amigos, os professores explicam tudo direitinho e tem muitas atividades divertidas.',
+    grade: '2º ano do Ensino Técnico',
+    text: 'O curso técnico integrado está me dando uma base muito boa. Aprendo conteúdos do ensino médio junto com a formação profissional, o que abre muitas portas.',
     avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop',
     rating: 5
   }
@@ -161,41 +162,38 @@ const testimonials = [
 
 const faqs = [
   {
-    question: 'Como acesso a plataforma digital de estudos?',
-    answer: 'Todos os alunos recebem login e senha no início do ano letivo. A plataforma pode ser acessada através do site da escola na área do aluno. Em caso de dúvidas, entre em contato com a secretaria.'
+    question: 'Como faço para realizar minha matrícula?',
+    answer: 'A matrícula é realizada presencialmente na secretaria da escola, dentro do período definido pela Secretaria de Educação. Fique atento ao calendário e aos documentos necessários divulgados pela escola.'
   },
   {
-    question: 'Quais documentos preciso para matrícula?',
-    answer: 'RG e CPF do aluno e responsável, comprovante de residência, certidão de nascimento, histórico escolar (transferência), carteira de vacinação atualizada e 2 fotos 3x4.'
+    question: 'Quais documentos são necessários para a matrícula?',
+    answer: 'RG e CPF do aluno e do responsável, comprovante de residência atualizado, certidão de nascimento, histórico escolar ou declaração de transferência e carteira de vacinação atualizada (para menores).'
   },
   {
-    question: 'Como funciona o sistema de reposição de aulas?',
-    answer: 'Aulas perdidas por falta podem ser repostas através de material disponibilizado na plataforma digital, aulas extras agendadas ou atividades complementares orientadas pelos professores.'
+    question: 'Como funciona a reposição de aulas em caso de falta?',
+    answer: 'Em caso de falta, o aluno deve buscar o conteúdo com o professor responsável ou com colegas. A escola orienta os estudantes sobre as atividades e avaliações perdidas conforme as normas do regimento escolar.'
   },
   {
     question: 'A escola oferece transporte escolar?',
-    answer: 'Sim, temos parceria com empresas de transporte escolar credenciadas. Entre em contato com a secretaria para informações sobre rotas, valores e disponibilidade.'
+    answer: 'O transporte escolar público é oferecido pela prefeitura para alunos que residem em áreas mais distantes. Para verificar a disponibilidade e as rotas, entre em contato com a secretaria da escola.'
   },
   {
-    question: 'Como são as atividades extracurriculares?',
-    answer: 'Oferecemos mais de 20 atividades extracurriculares incluídas na mensalidade ou com valores acessíveis. As inscrições são feitas no início de cada semestre através da plataforma online.'
+    question: 'Como funciona a recuperação escolar?',
+    answer: 'A escola oferece recuperação paralela e final para alunos com dificuldades de aprendizagem ou notas abaixo da média, conforme o regimento escolar. Procure a coordenação para entender como funciona no seu caso.'
   }
 ]
 
 export default function Alunos() {
-  const [activeTab, setActiveTab] = useState('infantil')
+  const [activeTab, setActiveTab] = useState('anosfinais')
   const [currentActivity, setCurrentActivity] = useState(0)
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
-  // Auto-play carousel
   useEffect(() => {
     if (!isAutoPlaying) return
-
     const interval = setInterval(() => {
       setCurrentActivity((prev) => (prev + 1) % activities.length)
     }, 5000)
-
     return () => clearInterval(interval)
   }, [isAutoPlaying])
 
@@ -236,8 +234,8 @@ export default function Alunos() {
           <HeroContent>
             <Title>Área do Aluno</Title>
             <Subtitle>
-              Tudo que você precisa para aproveitar ao máximo sua jornada educacional. 
-              Recursos, atividades e suporte para seu desenvolvimento integral.
+              Informações, recursos e suporte para você aproveitar ao máximo 
+              sua jornada aqui na escola.
             </Subtitle>
           </HeroContent>
         </Hero>
@@ -252,16 +250,16 @@ export default function Alunos() {
           </WelcomeImage>
           <WelcomeContent>
             <WelcomeText>
-              <WelcomeTitle>Bem-vindo à sua segunda casa!</WelcomeTitle>
+              <WelcomeTitle>Bem-vindo à escola!</WelcomeTitle>
               <WelcomeDescription>
-                Aqui você não é apenas um número de matrícula - você é parte de uma 
-                comunidade que acredita no seu potencial. Nossa missão é proporcionar 
-                experiências que vão além da sala de aula, desenvolvendo suas habilidades, 
-                talentos e preparando você para os desafios do futuro.
+                Aqui você faz parte de uma comunidade escolar comprometida com seu 
+                aprendizado e bem-estar. Nossa equipe de professores e funcionários 
+                está sempre disponível para apoiar você durante sua trajetória escolar.
               </WelcomeDescription>
               <WelcomeDescription>
-                Explore todos os recursos disponíveis, participe das atividades, conecte-se 
-                com colegas e professores, e construa memórias que durarão para sempre.
+                Participe das atividades, mantenha presença nas aulas, busque os 
+                professores quando tiver dúvidas e aproveite tudo o que a escola 
+                tem a oferecer para o seu desenvolvimento.
               </WelcomeDescription>
             </WelcomeText>
             <WelcomeFeatures>
@@ -272,7 +270,7 @@ export default function Alunos() {
                     <polyline points="22 4 12 14.01 9 11.01"/>
                   </svg>
                 </FeatureIcon>
-                <FeatureText>Acesso 24/7 à plataforma digital</FeatureText>
+                <FeatureText>Professores dedicados ao seu aprendizado</FeatureText>
               </Feature>
               <Feature>
                 <FeatureIcon>
@@ -283,7 +281,7 @@ export default function Alunos() {
                     <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                   </svg>
                 </FeatureIcon>
-                <FeatureText>Suporte pedagógico personalizado</FeatureText>
+                <FeatureText>Equipe de coordenação e apoio disponível</FeatureText>
               </Feature>
               <Feature>
                 <FeatureIcon>
@@ -292,17 +290,17 @@ export default function Alunos() {
                     <polyline points="12 6 12 12 16 14"/>
                   </svg>
                 </FeatureIcon>
-                <FeatureText>Mais de 20 atividades extracurriculares</FeatureText>
+                <FeatureText>Atividades e projetos ao longo do ano</FeatureText>
               </Feature>
             </WelcomeFeatures>
           </WelcomeContent>
         </WelcomeSection>
 
-        {/* Tab Section - Benefícios por segmento */}
+        {/* Tab Section */}
         <TabSection>
-          <SectionTitle>Benefícios por Segmento</SectionTitle>
+          <SectionTitle>Informações por Segmento</SectionTitle>
           <SectionSubtitle>
-            Descubra as vantagens exclusivas para cada etapa da sua jornada educacional
+            Saiba mais sobre cada etapa de ensino oferecida pela escola
           </SectionSubtitle>
           
           <TabNavigation>
@@ -318,112 +316,187 @@ export default function Alunos() {
           </TabNavigation>
 
           <TabContent>
-            <TabPanel $active={activeTab === 'infantil'}>
+            {/* ANOS FINAIS */}
+            <TabPanel $active={activeTab === 'anosfinais'}>
               <BenefitsGrid>
                 <BenefitCard>
-                  <BenefitIcon>🎨</BenefitIcon>
-                  <BenefitTitle>Aprendizado Lúdico</BenefitTitle>
+                  <BenefitIcon>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                  </BenefitIcon>
+                  <BenefitTitle>Base Curricular do 6º ao 9º ano</BenefitTitle>
                   <BenefitDescription>
-                    Metodologias baseadas em brincadeiras, jogos e atividades que estimulam 
-                    a criatividade e o desenvolvimento cognitivo de forma natural.
+                    Ensino das disciplinas obrigatórias como Português, Matemática, 
+                    Ciências, História e Geografia, com foco em desenvolver o raciocínio 
+                    e preparar para o ensino médio.
                   </BenefitDescription>
                 </BenefitCard>
                 <BenefitCard>
-                  <BenefitIcon>👶</BenefitIcon>
-                  <BenefitTitle>Ambiente Seguro</BenefitTitle>
+                  <BenefitIcon>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="3" width="20" height="14" rx="2"/>
+                      <path d="M8 21h8"/>
+                      <path d="M12 17v4"/>
+                    </svg>
+                  </BenefitIcon>
+                  <BenefitTitle>Sala de Informática</BenefitTitle>
                   <BenefitDescription>
-                    Instalações adaptadas, monitoramento constante e equipe especializada 
-                    em educação infantil para garantir segurança e bem-estar.
+                    Acesso à sala de informática para pesquisas escolares, atividades 
+                    digitais e iniciação ao uso das tecnologias de forma orientada 
+                    pelos professores.
                   </BenefitDescription>
                 </BenefitCard>
                 <BenefitCard>
-                  <BenefitIcon>🤝</BenefitIcon>
-                  <BenefitTitle>Socialização</BenefitTitle>
+                  <BenefitIcon>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </BenefitIcon>
+                  <BenefitTitle>Projetos e Feiras Escolares</BenefitTitle>
                   <BenefitDescription>
-                    Desenvolvimento de habilidades sociais através da interação com colegas 
-                    e atividades em grupo orientadas por profissionais.
+                    Participação em feiras de ciências, mostras culturais e projetos 
+                    interdisciplinares que incentivam a pesquisa, a curiosidade e o 
+                    trabalho em equipe.
                   </BenefitDescription>
                 </BenefitCard>
                 <BenefitCard>
-                  <BenefitIcon>📚</BenefitIcon>
-                  <BenefitTitle>Alfabetização Integral</BenefitTitle>
+                  <BenefitIcon>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </BenefitIcon>
+                  <BenefitTitle>Recuperação e Reforço</BenefitTitle>
                   <BenefitDescription>
-                    Processo de alfabetização respeitando o ritmo individual, com materiais 
-                    pedagógicos modernos e acompanhamento personalizado.
+                    Suporte pedagógico para alunos com dificuldades, com atividades 
+                    de recuperação e orientação dos professores para garantir que 
+                    nenhum aluno fique para trás.
                   </BenefitDescription>
                 </BenefitCard>
               </BenefitsGrid>
             </TabPanel>
 
-            <TabPanel $active={activeTab === 'fundamental'}>
-              <BenefitsGrid>
-                <BenefitCard>
-                  <BenefitIcon>🔬</BenefitIcon>
-                  <BenefitTitle>Laboratórios Equipados</BenefitTitle>
-                  <BenefitDescription>
-                    Aulas práticas em laboratórios de ciências, informática e maker space 
-                    para experimentação e aprendizagem hands-on.
-                  </BenefitDescription>
-                </BenefitCard>
-                <BenefitCard>
-                  <BenefitIcon>🌍</BenefitIcon>
-                  <BenefitTitle>Programa Bilíngue</BenefitTitle>
-                  <BenefitDescription>
-                    Ensino de inglês integrado ao currículo, com aulas imersivas e 
-                    preparação para certificações internacionais.
-                  </BenefitDescription>
-                </BenefitCard>
-                <BenefitCard>
-                  <BenefitIcon>🎯</BenefitIcon>
-                  <BenefitTitle>Projetos Interdisciplinares</BenefitTitle>
-                  <BenefitDescription>
-                    Aprendizagem por projetos conectando diferentes disciplinas e 
-                    desenvolvendo pensamento crítico e criativo.
-                  </BenefitDescription>
-                </BenefitCard>
-                <BenefitCard>
-                  <BenefitIcon>💪</BenefitIcon>
-                  <BenefitTitle>Desenvolvimento Socioemocional</BenefitTitle>
-                  <BenefitDescription>
-                    Programas de inteligência emocional, resolução de conflitos e 
-                    desenvolvimento de competências para o século XXI.
-                  </BenefitDescription>
-                </BenefitCard>
-              </BenefitsGrid>
-            </TabPanel>
-
+            {/* ENSINO MÉDIO */}
             <TabPanel $active={activeTab === 'medio'}>
               <BenefitsGrid>
                 <BenefitCard>
-                  <BenefitIcon>🎓</BenefitIcon>
-                  <BenefitTitle>Preparação Vestibular</BenefitTitle>
+                  <BenefitIcon>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                      <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                  </BenefitIcon>
+                  <BenefitTitle>Preparação para o ENEM</BenefitTitle>
                   <BenefitDescription>
-                    Simulados regulares, aulas específicas para ENEM e vestibulares, 
-                    com análise de desempenho e orientação individualizada.
+                    Aulas voltadas ao conteúdo cobrado no ENEM, com orientação dos 
+                    professores para que os alunos estejam preparados para a prova 
+                    e para o acesso ao ensino superior.
                   </BenefitDescription>
                 </BenefitCard>
                 <BenefitCard>
-                  <BenefitIcon>🧭</BenefitIcon>
-                  <BenefitTitle>Orientação Vocacional</BenefitTitle>
+                  <BenefitIcon>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polygon points="10 8 16 12 10 16 10 8"/>
+                    </svg>
+                  </BenefitIcon>
+                  <BenefitTitle>Orientação Profissional</BenefitTitle>
                   <BenefitDescription>
-                    Acompanhamento profissional para descoberta de aptidões, visitas a 
-                    universidades e conexão com profissionais de diversas áreas.
+                    Conversas e orientações sobre escolha de carreira, cursos superiores, 
+                    mercado de trabalho e caminhos disponíveis após a conclusão do 
+                    ensino médio.
                   </BenefitDescription>
                 </BenefitCard>
                 <BenefitCard>
-                  <BenefitIcon>💼</BenefitIcon>
+                  <BenefitIcon>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                  </BenefitIcon>
                   <BenefitTitle>Projeto de Vida</BenefitTitle>
                   <BenefitDescription>
-                    Desenvolvimento de plano de carreira, empreendedorismo, educação 
-                    financeira e preparação para o mercado de trabalho.
+                    Atividades voltadas ao autoconhecimento, planejamento do futuro e 
+                    desenvolvimento de habilidades pessoais e sociais para a vida adulta 
+                    e o mercado de trabalho.
                   </BenefitDescription>
                 </BenefitCard>
                 <BenefitCard>
-                  <BenefitIcon>🏆</BenefitIcon>
-                  <BenefitTitle>Olimpíadas e Competições</BenefitTitle>
+                  <BenefitIcon>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="8" r="6"/>
+                      <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+                    </svg>
+                  </BenefitIcon>
+                  <BenefitTitle>Olimpíadas do Conhecimento</BenefitTitle>
                   <BenefitDescription>
-                    Participação em olimpíadas científicas, competições de robótica e 
-                    eventos acadêmicos nacionais e internacionais.
+                    Incentivo à participação em olimpíadas como OBMEP e OBA — 
+                    competições educacionais gratuitas e abertas a todos os 
+                    alunos da rede pública.
+                  </BenefitDescription>
+                </BenefitCard>
+              </BenefitsGrid>
+            </TabPanel>
+
+            {/* ENSINO TÉCNICO */}
+            <TabPanel $active={activeTab === 'tecnico'}>
+              <BenefitsGrid>
+                <BenefitCard>
+                  <BenefitIcon>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                  </BenefitIcon>
+                  <BenefitTitle>Formação Técnica e Profissional</BenefitTitle>
+                  <BenefitDescription>
+                    Curso técnico integrado ao ensino médio, com aulas práticas que 
+                    preparam o aluno diretamente para atuar no mercado de trabalho 
+                    ao concluir o curso.
+                  </BenefitDescription>
+                </BenefitCard>
+                <BenefitCard>
+                  <BenefitIcon>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                  </BenefitIcon>
+                  <BenefitTitle>Estágio Supervisionado</BenefitTitle>
+                  <BenefitDescription>
+                    Oportunidade de realizar estágio supervisionado em empresas e 
+                    organizações parceiras, colocando em prática os conhecimentos 
+                    adquiridos durante o curso.
+                  </BenefitDescription>
+                </BenefitCard>
+                <BenefitCard>
+                  <BenefitIcon>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="16 18 22 12 16 6"/>
+                      <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                  </BenefitIcon>
+                  <BenefitTitle>Aulas Práticas</BenefitTitle>
+                  <BenefitDescription>
+                    Atividades práticas realizadas em laboratórios e espaços adequados 
+                    ao curso técnico, complementando o conteúdo teórico com experiências 
+                    reais da área.
+                  </BenefitDescription>
+                </BenefitCard>
+                <BenefitCard>
+                  <BenefitIcon>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                  </BenefitIcon>
+                  <BenefitTitle>Diploma Técnico Reconhecido</BenefitTitle>
+                  <BenefitDescription>
+                    Ao concluir o curso, o aluno recebe o diploma de técnico reconhecido 
+                    pelo MEC, além do certificado de conclusão do ensino médio, com 
+                    dupla habilitação.
                   </BenefitDescription>
                 </BenefitCard>
               </BenefitsGrid>
@@ -433,9 +506,9 @@ export default function Alunos() {
 
         {/* Activities Carousel */}
         <ActivitiesSection>
-          <SectionTitle>Atividades Extracurriculares</SectionTitle>
+          <SectionTitle>Atividades na Escola</SectionTitle>
           <SectionSubtitle>
-            Desenvolva seus talentos além da sala de aula
+            Conheça o que acontece no dia a dia da nossa escola
           </SectionSubtitle>
           
           <ActivityCarousel>
@@ -479,9 +552,9 @@ export default function Alunos() {
 
         {/* Resources Section */}
         <ResourcesSection>
-          <SectionTitle>Recursos e Ferramentas</SectionTitle>
+          <SectionTitle>Espaços da Escola</SectionTitle>
           <SectionSubtitle>
-            Acesse plataformas e materiais que potencializam seu aprendizado
+            Conheça os espaços disponíveis para os alunos no dia a dia escolar
           </SectionSubtitle>
           
           <ResourcesGrid>
@@ -494,20 +567,20 @@ export default function Alunos() {
                     <line x1="12" y1="17" x2="12" y2="21"/>
                   </svg>
                 </ResourceIcon>
-                <ResourceTitle>Plataforma Digital</ResourceTitle>
+                <ResourceTitle>Sala de Informática</ResourceTitle>
               </ResourceHeader>
               <ResourceList>
                 <ResourceItem>
-                  <ResourceLink href="#">Material didático digital</ResourceLink>
+                  <ResourceLink href="#">Pesquisas escolares orientadas</ResourceLink>
                 </ResourceItem>
                 <ResourceItem>
-                  <ResourceLink href="#">Aulas gravadas</ResourceLink>
+                  <ResourceLink href="#">Atividades digitais com os professores</ResourceLink>
                 </ResourceItem>
                 <ResourceItem>
-                  <ResourceLink href="#">Exercícios interativos</ResourceLink>
+                  <ResourceLink href="#">Acesso supervisionado à internet</ResourceLink>
                 </ResourceItem>
                 <ResourceItem>
-                  <ResourceLink href="#">Simulados online</ResourceLink>
+                  <ResourceLink href="#">Uso em horário de aula</ResourceLink>
                 </ResourceItem>
               </ResourceList>
             </ResourceCard>
@@ -520,20 +593,20 @@ export default function Alunos() {
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
                   </svg>
                 </ResourceIcon>
-                <ResourceTitle>Biblioteca Virtual</ResourceTitle>
+                <ResourceTitle>Biblioteca Escolar</ResourceTitle>
               </ResourceHeader>
               <ResourceList>
                 <ResourceItem>
-                  <ResourceLink href="#">Acervo digital completo</ResourceLink>
+                  <ResourceLink href="#">Empréstimo de livros didáticos e literários</ResourceLink>
                 </ResourceItem>
                 <ResourceItem>
-                  <ResourceLink href="#">E-books e audiobooks</ResourceLink>
+                  <ResourceLink href="#">Espaço tranquilo para leitura e estudo</ResourceLink>
                 </ResourceItem>
                 <ResourceItem>
-                  <ResourceLink href="#">Periódicos acadêmicos</ResourceLink>
+                  <ResourceLink href="#">Apoio a pesquisas e trabalhos escolares</ResourceLink>
                 </ResourceItem>
                 <ResourceItem>
-                  <ResourceLink href="#">Reserva de livros físicos</ResourceLink>
+                  <ResourceLink href="#">Atividades de incentivo à leitura</ResourceLink>
                 </ResourceItem>
               </ResourceList>
             </ResourceCard>
@@ -542,24 +615,24 @@ export default function Alunos() {
               <ResourceHeader>
                 <ResourceIcon>
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polygon points="10 8 16 12 10 16 10 8"/>
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
                   </svg>
                 </ResourceIcon>
-                <ResourceTitle>Videoaulas</ResourceTitle>
+                <ResourceTitle>Quadra Esportiva</ResourceTitle>
               </ResourceHeader>
               <ResourceList>
                 <ResourceItem>
-                  <ResourceLink href="#">Conteúdo por disciplina</ResourceLink>
+                  <ResourceLink href="#">Aulas de educação física</ResourceLink>
                 </ResourceItem>
                 <ResourceItem>
-                  <ResourceLink href="#">Revisão para provas</ResourceLink>
+                  <ResourceLink href="#">Futsal, vôlei e basquete</ResourceLink>
                 </ResourceItem>
                 <ResourceItem>
-                  <ResourceLink href="#">Tutoriais e experimentos</ResourceLink>
+                  <ResourceLink href="#">Atividades recreativas no intervalo</ResourceLink>
                 </ResourceItem>
                 <ResourceItem>
-                  <ResourceLink href="#">Lives e eventos online</ResourceLink>
+                  <ResourceLink href="#">Jogos e gincanas escolares</ResourceLink>
                 </ResourceItem>
               </ResourceList>
             </ResourceCard>
@@ -571,20 +644,20 @@ export default function Alunos() {
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                   </svg>
                 </ResourceIcon>
-                <ResourceTitle>Suporte Acadêmico</ResourceTitle>
+                <ResourceTitle>Sala de Recurso</ResourceTitle>
               </ResourceHeader>
               <ResourceList>
                 <ResourceItem>
-                  <ResourceLink href="#">Plantão de dúvidas online</ResourceLink>
+                  <ResourceLink href="#">Atendimento educacional especializado</ResourceLink>
                 </ResourceItem>
                 <ResourceItem>
-                  <ResourceLink href="#">Monitoria com alunos</ResourceLink>
+                  <ResourceLink href="#">Suporte a alunos com necessidades específicas</ResourceLink>
                 </ResourceItem>
                 <ResourceItem>
-                  <ResourceLink href="#">Atendimento psicopedagógico</ResourceLink>
+                  <ResourceLink href="#">Materiais e recursos adaptados</ResourceLink>
                 </ResourceItem>
                 <ResourceItem>
-                  <ResourceLink href="#">Canal direto com professores</ResourceLink>
+                  <ResourceLink href="#">Apoio à inclusão escolar</ResourceLink>
                 </ResourceItem>
               </ResourceList>
             </ResourceCard>
@@ -593,9 +666,9 @@ export default function Alunos() {
 
         {/* Student Life */}
         <StudentLifeSection>
-          <SectionTitle>Vida Estudantil</SectionTitle>
+          <SectionTitle>Vida na Escola</SectionTitle>
           <SectionSubtitle>
-            Experiências que vão além do conteúdo acadêmico
+            Momentos e experiências que fazem parte da nossa rotina escolar
           </SectionSubtitle>
           
           <LifeGrid>
@@ -607,10 +680,11 @@ export default function Alunos() {
                 />
               </LifeImageContainer>
               <LifeContent>
-                <LifeTitle>Eventos e Celebrações</LifeTitle>
+                <LifeTitle>Eventos e Datas Comemorativas</LifeTitle>
                 <LifeDescription>
-                  Festa junina, feira cultural, semana esportiva, formatura e muito mais! 
-                  Momentos especiais que criam memórias inesquecíveis.
+                  Festa junina, semana da consciência negra, dia do estudante e outras 
+                  datas importantes que fazem parte do calendário escolar e fortalecem 
+                  a identidade da nossa comunidade.
                 </LifeDescription>
               </LifeContent>
             </LifeCard>
@@ -619,14 +693,15 @@ export default function Alunos() {
               <LifeImageContainer>
                 <img 
                   src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop" 
-                  alt="Viagens"
+                  alt="Visitas"
                 />
               </LifeImageContainer>
               <LifeContent>
-                <LifeTitle>Viagens e Excursões</LifeTitle>
+                <LifeTitle>Visitas Pedagógicas</LifeTitle>
                 <LifeDescription>
-                  Viagens pedagógicas, intercâmbios culturais e passeios educativos que 
-                  ampliam horizontes e proporcionam aprendizado vivencial.
+                  Saídas de campo a museus e espaços culturais da cidade, 
+                  organizadas pelos professores para complementar o conteúdo 
+                  visto em sala de aula.
                 </LifeDescription>
               </LifeContent>
             </LifeCard>
@@ -641,8 +716,9 @@ export default function Alunos() {
               <LifeContent>
                 <LifeTitle>Grêmio Estudantil</LifeTitle>
                 <LifeDescription>
-                  Participe ativamente das decisões da escola, organize eventos e 
-                  desenvolva liderança e cidadania através do grêmio estudantil.
+                  Espaço de participação dos alunos na vida da escola. O grêmio 
+                  representa os estudantes, organiza atividades e contribui com 
+                  sugestões para a gestão escolar.
                 </LifeDescription>
               </LifeContent>
             </LifeCard>
@@ -651,14 +727,15 @@ export default function Alunos() {
               <LifeImageContainer>
                 <img 
                   src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop" 
-                  alt="Voluntariado"
+                  alt="Ações Sociais"
                 />
               </LifeImageContainer>
               <LifeContent>
-                <LifeTitle>Ações Sociais</LifeTitle>
+                <LifeTitle>Campanhas e Ações Solidárias</LifeTitle>
                 <LifeDescription>
-                  Projetos de voluntariado e responsabilidade social que desenvolvem 
-                  empatia, solidariedade e consciência cidadã.
+                  Campanhas de arrecadação, ações comunitárias e projetos de cidadania 
+                  que incentivam os alunos a se engajar com a realidade ao redor 
+                  e cuidar do próximo.
                 </LifeDescription>
               </LifeContent>
             </LifeCard>
@@ -667,9 +744,9 @@ export default function Alunos() {
 
         {/* Support Section */}
         <SupportSection>
-          <SectionTitle>Rede de Apoio</SectionTitle>
+          <SectionTitle>Com Quem Falar</SectionTitle>
           <SectionSubtitle>
-            Equipe multidisciplinar dedicada ao seu bem-estar e desenvolvimento
+            Nossa equipe está pronta para te ouvir e ajudar no que for preciso
           </SectionSubtitle>
           
           <SupportContainer>
@@ -682,12 +759,13 @@ export default function Alunos() {
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                 </svg>
               </SupportIconWrapper>
-              <SupportTitle>Orientação Pedagógica</SupportTitle>
+              <SupportTitle>Coordenação Pedagógica</SupportTitle>
               <SupportDescription>
-                Acompanhamento individual do desempenho acadêmico, estratégias de estudo 
-                e suporte para dificuldades de aprendizagem.
+                Dúvidas sobre notas, frequência, comportamento ou qualquer 
+                questão relacionada à sua vida escolar. A coordenação 
+                está disponível para orientar alunos e responsáveis.
               </SupportDescription>
-              <SupportContact>pedagogico@escola.com.br</SupportContact>
+              <SupportContact>Secretaria da escola</SupportContact>
             </SupportCard>
 
             <SupportCard>
@@ -696,12 +774,13 @@ export default function Alunos() {
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                 </svg>
               </SupportIconWrapper>
-              <SupportTitle>Apoio Psicológico</SupportTitle>
+              <SupportTitle>Sala de Recurso</SupportTitle>
               <SupportDescription>
-                Atendimento psicológico individual e em grupo para questões emocionais, 
-                ansiedade, relacionamentos e desenvolvimento pessoal.
+                Atendimento educacional especializado para alunos com necessidades 
+                específicas. A sala de recurso garante o suporte necessário 
+                para a inclusão e o aprendizado de todos.
               </SupportDescription>
-              <SupportContact>psicologia@escola.com.br</SupportContact>
+              <SupportContact>Sala de Recurso Multifuncional</SupportContact>
             </SupportCard>
 
             <SupportCard>
@@ -710,19 +789,20 @@ export default function Alunos() {
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                 </svg>
               </SupportIconWrapper>
-              <SupportTitle>Coordenação Disponível</SupportTitle>
+              <SupportTitle>Diretoria da Escola</SupportTitle>
               <SupportDescription>
-                Canal aberto com a coordenação para esclarecimento de dúvidas, 
-                sugestões e resolução de questões do dia a dia escolar.
+                Para questões mais sérias ou que precisam da atenção da gestão 
+                escolar, a diretoria atende alunos e responsáveis 
+                presencialmente na escola.
               </SupportDescription>
-              <SupportContact>(11) 3456-7890</SupportContact>
+              <SupportContact>Presencialmente na escola</SupportContact>
             </SupportCard>
           </SupportContainer>
         </SupportSection>
 
         {/* Testimonials */}
         <TestimonialsSection>
-          <SectionTitle>Depoimentos de Alunos</SectionTitle>
+          <SectionTitle>O Que os Alunos Dizem</SectionTitle>
           <SectionSubtitle>
             Veja o que nossos estudantes têm a dizer sobre a experiência na escola
           </SectionSubtitle>
@@ -752,9 +832,9 @@ export default function Alunos() {
 
         {/* FAQ */}
         <FAQSection>
-          <SectionTitle>Perguntas Frequentes</SectionTitle>
+          <SectionTitle>Dúvidas Frequentes</SectionTitle>
           <SectionSubtitle>
-            Respostas para as dúvidas mais comuns dos alunos
+            Respostas para as perguntas mais comuns dos alunos e responsáveis
           </SectionSubtitle>
           
           <FAQContainer>
@@ -790,18 +870,19 @@ export default function Alunos() {
         {/* CTA */}
         <CTASection>
           <CTAContent>
-            <CTATitle>Pronto para começar?</CTATitle>
+            <CTATitle>Ficou com alguma dúvida?</CTATitle>
             <CTADescription>
-              Acesse sua área exclusiva ou entre em contato conosco para saber mais 
-              sobre como aproveitar ao máximo todos os recursos disponíveis.
+              Entre em contato com a secretaria ou venha pessoalmente à escola. 
+              Estamos aqui para te ajudar no que precisar.
             </CTADescription>
             <CTAButtons>
-              <PrimaryButton href="#login">Acessar Portal do Aluno</PrimaryButton>
-              <SecondaryButton href="#contato">Falar com Coordenação</SecondaryButton>
+              <PrimaryButton href="/contatos">Fale Conosco</PrimaryButton>
+              <SecondaryButton href="/sobre">Conheça a Escola</SecondaryButton>
             </CTAButtons>
           </CTAContent>
         </CTASection>
       </Container>
+      <Footer />
     </>
   )
 }

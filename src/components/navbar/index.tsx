@@ -68,13 +68,13 @@ const Navbar = () => {
         <LogoButton onClick={handleLogoClick}>
           <LogoImage>
             <img 
-              src="/logo.png" 
+              src="/logo11.jpeg" 
               alt="Logo" 
             />
           </LogoImage>
           {showLogo && (
             <LogoText $expanded={expanded} $show={showLogo}>
-              <span style={{ color: '#000000' }}>E.E Instituto Lumina</span>
+              <span style={{ color: '#000000' }}>BIBLIOTECARIA</span>
             </LogoText>
           )}
         </LogoButton>

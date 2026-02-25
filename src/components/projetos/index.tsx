@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
 import { 
   Container, 
   Hero, 
@@ -447,6 +448,7 @@ export default function Projetos() {
           </CTAContent>
         </CTASection>
       </Container>
+      <Footer />
     </>
   )
 }

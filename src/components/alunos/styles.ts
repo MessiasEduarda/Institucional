@@ -515,16 +515,41 @@ export const BenefitCard = styled.div`
 `
 
 export const BenefitIcon = styled.div`
-  font-size: 3.5rem;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #3F693B 0%, #5a8a54 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
   margin-bottom: 1.5rem;
   
+  svg {
+    width: 32px;
+    height: 32px;
+    stroke: white;
+  }
+  
   @media (max-width: 768px) {
-    font-size: 3rem;
+    width: 56px;
+    height: 56px;
+    
+    svg {
+      width: 28px;
+      height: 28px;
+    }
   }
   
   @media (max-width: 480px) {
-    font-size: 2.5rem;
+    width: 50px;
+    height: 50px;
     margin-bottom: 1.2rem;
+    
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 `
 
