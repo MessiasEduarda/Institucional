@@ -22,6 +22,10 @@ export const NavbarContainer = styled.div<NavbarContainerProps>`
   z-index: 1000;
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const LogoButton = styled.div`
@@ -207,4 +211,128 @@ export const Divider = styled.div`
   height: 1px;
   background-color: #333;
   margin: -2rem 0 1.5rem 0;
+`;
+
+/* ─── Mobile-only styles ─── */
+
+export const MobileMenuButton = styled.button`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1100;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: #ffffff;
+    box-shadow: 0px 4px 16px 0px #00000029;
+    cursor: pointer;
+    color: #3F693B;
+
+    svg {
+      font-size: 1.6rem;
+    }
+  }
+`;
+
+export const MobileOverlay = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1050;
+  }
+`;
+
+interface MobileNavProps {
+  $open: boolean;
+}
+
+export const MobileNav = styled.div<MobileNavProps>`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 260px;
+    background: #ffffff;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+    z-index: 1200;
+    padding: 1rem 0 2rem;
+    transform: ${({ $open }) => ($open ? 'translateX(0)' : 'translateX(-100%)')};
+    transition: transform 0.3s ease;
+  }
+`;
+
+interface MobileNavLinkProps {
+  $selected: boolean;
+}
+
+export const MobileNavLink = styled.div<MobileNavLinkProps>`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.5rem;
+  cursor: pointer;
+  background: ${({ $selected }) => ($selected ? '#3F693B' : 'transparent')};
+  border-radius: 0 50px 50px 0;
+  margin-right: 1rem;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #3F693B;
+
+    svg {
+      color: #f5f2f2;
+    }
+
+    span {
+      color: #f5f2f2;
+    }
+  }
+
+  ${({ $selected }) =>
+    $selected &&
+    `
+    svg { color: #f5f2f2 !important; }
+    span { color: #f5f2f2 !important; }
+  `}
+`;
+
+export const MobileNavLinkIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  svg {
+    font-size: 1.35rem;
+    color: #3F693B;
+  }
+`;
+
+interface MobileNavLinkTextProps {
+  $selected: boolean;
+}
+
+export const MobileNavLinkText = styled.span<MobileNavLinkTextProps>`
+  font-size: 0.95rem;
+  font-weight: ${({ $selected }) => ($selected ? '600' : '500')};
+  color: ${({ $selected }) => ($selected ? '#f5f2f2' : '#7a7a7a')};
+  white-space: nowrap;
 `;

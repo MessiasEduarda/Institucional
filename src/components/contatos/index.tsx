@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Navbar from '@/components/navbar'
+import SucessModal from '@/components/ui/modals/sucessModal'
 import { 
   Container, 
   Hero, 
@@ -71,6 +72,8 @@ const faqs = [
 
 export default function Contatos() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
+  const [enviando, setEnviando] = useState(false)
+  const [successModalOpen, setSuccessModalOpen] = useState(false)
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
@@ -83,15 +86,10 @@ export default function Contatos() {
     setOpenFAQ(openFAQ === index ? null : index)
   }
 
-  // Função para formatar o telefone
   const formatarTelefone = (valor: string) => {
-    // Remove tudo que não é número
     const numeros = valor.replace(/\D/g, '')
-    
-    // Limita a 11 dígitos
     const numeroLimitado = numeros.slice(0, 11)
     
-    // Aplica a máscara
     if (numeroLimitado.length <= 2) {
       return numeroLimitado
     } else if (numeroLimitado.length <= 6) {
@@ -106,7 +104,6 @@ export default function Contatos() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     
-    // Se for o campo telefone, aplica a máscara
     if (name === 'telefone') {
       const telefoneFormatado = formatarTelefone(value)
       setFormData(prev => ({
@@ -121,32 +118,55 @@ export default function Contatos() {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
-    // Validação adicional
+
     if (!formData.nome || !formData.email || !formData.telefone || !formData.assunto || !formData.mensagem) {
       alert('Por favor, preencha todos os campos obrigatórios!')
       return
     }
-    
-    // Aqui você implementaria a lógica de envio do formulário
-    console.log('Formulário enviado:', formData)
-    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.')
-    
-    // Limpar formulário
-    setFormData({
-      nome: '',
-      email: '',
-      telefone: '',
-      assunto: '',
-      mensagem: ''
-    })
+
+    setEnviando(true)
+
+    try {
+      const res = await fetch('/api/contato', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+
+      const data = await res.json()
+
+      if (data.ok) {
+        setSuccessModalOpen(true)
+        setFormData({
+          nome: '',
+          email: '',
+          telefone: '',
+          assunto: '',
+          mensagem: ''
+        })
+      } else {
+        alert('Erro ao enviar a mensagem. Tente novamente.')
+      }
+    } catch {
+      alert('Erro ao enviar. Verifique sua conexão e tente novamente.')
+    } finally {
+      setEnviando(false)
+    }
   }
 
   return (
     <>
       <Navbar />
+
+      <SucessModal
+        isOpen={successModalOpen}
+        title="Mensagem Enviada com Sucesso!"
+        message="Recebemos sua mensagem e entraremos em contato em breve. Obrigado por falar conosco!"
+        onClose={() => setSuccessModalOpen(false)}
+      />
+
       <Container>
         {/* Hero Section */}
         <Hero>
@@ -343,12 +363,14 @@ export default function Contatos() {
               * Todos os campos são obrigatórios
             </p>
 
-            <SubmitButton type="submit">
-              Enviar Mensagem
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="22" y1="2" x2="11" y2="13"/>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-              </svg>
+            <SubmitButton type="submit" disabled={enviando}>
+              {enviando ? 'Enviando...' : 'Enviar Mensagem'}
+              {!enviando && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="22" y1="2" x2="11" y2="13"/>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+              )}
             </SubmitButton>
           </FormContainer>
         </FormSection>

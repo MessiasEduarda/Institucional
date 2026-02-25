@@ -21,10 +21,6 @@ import {
   ImageSection,
   ImageContent,
   TextContent,
-  StatsSection,
-  StatCard,
-  StatNumber,
-  StatLabel,
   TestimonialSection,
   TestimonialCard,
   TestimonialText,
@@ -41,89 +37,6 @@ import {
   PrimaryButton,
   SecondaryButton
 } from './styles'
-
-// Hook personalizado para animação de contagem
-function useCountAnimation(end: number, duration: number = 2000, shouldStart: boolean = false): number {
-  const [count, setCount] = useState<number>(0)
-
-  useEffect(() => {
-    if (!shouldStart) return
-
-    let cancelled = false
-    let startTime: number | undefined
-
-    const step = (timestamp: number) => {
-      if (cancelled) return
-      
-      if (!startTime) startTime = timestamp
-      const progress = timestamp - startTime
-      const percentage = Math.min(progress / duration, 1)
-      
-      // Easing function para suavizar a animação
-      const easeOutQuart = 1 - Math.pow(1 - percentage, 4)
-      const newCount = Math.floor(end * easeOutQuart)
-      
-      setCount(newCount)
-
-      if (percentage < 1) {
-        requestAnimationFrame(step)
-      } else {
-        setCount(end)
-      }
-    }
-
-    requestAnimationFrame(step)
-
-    return () => {
-      cancelled = true
-    }
-  }, [end, duration, shouldStart])
-
-  return count
-}
-
-// Componente para cada stat card animado
-interface AnimatedStatCardProps {
-  endNumber: number
-  label: string
-  suffix?: string
-}
-
-function AnimatedStatCard({ endNumber, label, suffix = '' }: AnimatedStatCardProps) {
-  const [isVisible, setIsVisible] = useState<boolean>(false)
-  const cardRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const currentRef = cardRef.current
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (currentRef) {
-      observer.observe(currentRef)
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef)
-      }
-    }
-  }, [isVisible])
-
-  const count = useCountAnimation(endNumber, 2000, isVisible)
-
-  return (
-    <StatCard ref={cardRef}>
-      <StatNumber>{count}{suffix}</StatNumber>
-      <StatLabel>{label}</StatLabel>
-    </StatCard>
-  )
-}
 
 export default function Inicio() {
   return (
@@ -147,14 +60,6 @@ export default function Inicio() {
             <CTAButton href="/contatos">Agende uma Visita</CTAButton>
           </HeroContent>
         </Hero>
-
-        {/* Stats Section */}
-        <StatsSection>
-          <AnimatedStatCard endNumber={25} label="Anos de Excelência" suffix="+" />
-          <AnimatedStatCard endNumber={2500} label="Alunos Ativos" suffix="+" />
-          <AnimatedStatCard endNumber={98} label="Aprovação Vestibular" suffix="%" />
-          <AnimatedStatCard endNumber={150} label="Professores Qualificados" suffix="+" />
-        </StatsSection>
 
         {/* Diferenciais Section */}
         <Section>
@@ -190,21 +95,6 @@ export default function Inicio() {
                 Instalações de ponta com salas climatizadas, laboratórios equipados, 
                 biblioteca completa, áreas esportivas e tecnologia integrada em 
                 todos os ambientes de aprendizagem.
-              </CardDescription>
-            </Card>
-            <Card>
-              <CardIcon>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3F693B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-                  <path d="M2 12h20"/>
-                </svg>
-              </CardIcon>
-              <CardTitle>Educação Bilíngue</CardTitle>
-              <CardDescription>
-                Programa de ensino bilíngue português-inglês com certificações 
-                internacionais, preparando nossos alunos para um mundo globalizado 
-                e competitivo.
               </CardDescription>
             </Card>
             <Card>
@@ -292,38 +182,14 @@ export default function Inicio() {
           <Grid $columns={3}>
             <Card>
               <img 
-                src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400&h=300&fit=crop" 
-                alt="Educação Infantil"
-                style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1.5rem' }}
-              />
-              <CardTitle>Educação Infantil</CardTitle>
-              <CardDescription>
-                Para crianças de 2 a 5 anos. Desenvolvimento através do brincar, 
-                primeiras descobertas e socialização em ambiente seguro e estimulante.
-              </CardDescription>
-            </Card>
-            <Card>
-              <img 
                 src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop" 
-                alt="Ensino Fundamental"
+                alt="Anos Finais"
                 style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1.5rem' }}
               />
-              <CardTitle>Ensino Fundamental</CardTitle>
+              <CardTitle>Anos Finais</CardTitle>
               <CardDescription>
-                Do 1º ao 9º ano. Base sólida em todas as disciplinas com metodologias 
+                Do 6º ao 9º ano. Base sólida em todas as disciplinas com metodologias 
                 ativas, projetos interdisciplinares e desenvolvimento de competências.
-              </CardDescription>
-            </Card>
-            <Card>
-              <img 
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop" 
-                alt="Ensino Médio"
-                style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1.5rem' }}
-              />
-              <CardTitle>Ensino Médio</CardTitle>
-              <CardDescription>
-                Preparação completa para vestibulares e ENEM, com orientação 
-                vocacional e desenvolvimento de projetos de vida.
               </CardDescription>
             </Card>
           </Grid>
@@ -368,12 +234,32 @@ export default function Inicio() {
             </GalleryItem>
             <GalleryItem>
               <img 
-                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop" 
-                alt="Teatro"
+                src="https://images.unsplash.com/photo-1573496358961-3c82861ab8f4?w=600&h=400&fit=crop" 
+                alt="Sala de Recurso"
               />
               <div className="overlay">
-                <h3>Teatro</h3>
-                <p>Auditório para 400 pessoas</p>
+                <h3>Sala de Recurso</h3>
+                <p>Atendimento educacional especializado</p>
+              </div>
+            </GalleryItem>
+            <GalleryItem>
+              <img 
+                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&h=400&fit=crop" 
+                alt="Sala Maker"
+              />
+              <div className="overlay">
+                <h3>Sala Maker</h3>
+                <p>Criatividade e inovação na prática</p>
+              </div>
+            </GalleryItem>
+            <GalleryItem>
+              <img 
+                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop" 
+                alt="Sala de Informática"
+              />
+              <div className="overlay">
+                <h3>Sala de Informática</h3>
+                <p>Tecnologia acessível a todos os alunos</p>
               </div>
             </GalleryItem>
           </GalleryGrid>

@@ -15,7 +15,6 @@ export const Hero = styled.section`
   align-items: center;
   overflow: hidden;
   
-  /* Imagem de fundo ocupando todo o container */
   &::before {
     content: '';
     position: absolute;
@@ -50,7 +49,6 @@ export const HeroImage = styled.div`
     object-fit: cover;
   }
   
-  /* Overlay transparente */
   &::after {
     content: '';
     position: absolute;
@@ -183,96 +181,6 @@ export const CTAButton = styled.a`
   
   @media (max-width: 375px) {
     padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
-  }
-`
-
-export const StatsSection = styled.section`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  padding: 4rem;
-  padding-left: calc(80px + 1rem);
-  background: #f8f9fa;
-  
-  @media (max-width: 1200px) {
-    padding: 3.5rem 3rem;
-    padding-left: calc(80px + 3rem);
-    gap: 1.5rem;
-  }
-  
-  @media (max-width: 968px) {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 3rem 2rem;
-    padding-left: calc(80px + 2rem);
-  }
-  
-  @media (max-width: 768px) {
-    padding-left: 2rem;
-  }
-  
-  @media (max-width: 640px) {
-    padding: 2.5rem 1.5rem;
-    gap: 1.2rem;
-  }
-  
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-    padding: 2rem 1.5rem;
-  }
-`
-
-export const StatCard = styled.div`
-  text-align: center;
-  padding: 2rem;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-5px);
-  }
-  
-  @media (max-width: 640px) {
-    padding: 1.5rem;
-    border-radius: 12px;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 1.3rem;
-  }
-`
-
-export const StatNumber = styled.div`
-  font-size: 3rem;
-  font-weight: 800;
-  color: #3F693B;
-  margin-bottom: 0.5rem;
-  
-  @media (max-width: 968px) {
-    font-size: 2.5rem;
-  }
-  
-  @media (max-width: 640px) {
-    font-size: 2.2rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 2rem;
-  }
-`
-
-export const StatLabel = styled.div`
-  font-size: 1rem;
-  color: #666;
-  font-weight: 500;
-  
-  @media (max-width: 640px) {
-    font-size: 0.95rem;
-  }
-  
-  @media (max-width: 480px) {
     font-size: 0.9rem;
   }
 `
