@@ -1476,7 +1476,7 @@ export const FAQQuestion = styled.button`
   }
 `
 
-export const FAQAnswer = styled.div<{ children: React.ReactNode }>`
+export const FAQAnswer = styled.div`
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.3s ease;

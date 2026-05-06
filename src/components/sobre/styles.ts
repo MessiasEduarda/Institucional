@@ -887,62 +887,95 @@ export const CarouselDot = styled.button<{ $active: boolean }>`
 export const QuoteSection = styled.section`
   padding: 5rem 4rem;
   padding-left: calc(80px + 4rem);
-  background: linear-gradient(135deg, #3F693B 0%, #5a8a54 100%);
-  
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #1a3a18 0%, #2d5c28 40%, #3F693B 70%, #5a8a54 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
   @media (max-width: 1200px) {
-    padding: 4rem 3rem;
+    padding: 4.5rem 3rem;
     padding-left: calc(80px + 3rem);
   }
-  
+
   @media (max-width: 968px) {
-    padding: 3rem 2rem;
+    padding: 3.5rem 2rem;
     padding-left: calc(80px + 2rem);
   }
-  
+
   @media (max-width: 768px) {
     padding-left: 2rem;
   }
-  
+
   @media (max-width: 480px) {
-    padding: 2.5rem 1.5rem;
+    padding: 3rem 1.5rem;
   }
 `
 
 export const QuoteContent = styled.div`
-  max-width: 900px;
+  max-width: 820px;
   margin: 0 auto;
   text-align: center;
   color: white;
+  position: relative;
+  z-index: 1;
 `
 
 export const QuoteText = styled.blockquote`
-  font-size: 2rem;
+  font-size: 1.65rem;
   font-style: italic;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  line-height: 1.75;
+  margin: 0 0 2rem;
   font-weight: 300;
-  
-  @media (max-width: 968px) {
-    font-size: 1.7rem;
+  letter-spacing: 0.01em;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 0 auto 2rem;
+    border-radius: 2px;
   }
-  
-  @media (max-width: 640px) {
+
+  @media (max-width: 968px) {
     font-size: 1.4rem;
   }
-  
-  @media (max-width: 480px) {
+
+  @media (max-width: 640px) {
     font-size: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
     margin-bottom: 1.5rem;
   }
 `
 
 export const QuoteAuthor = styled.cite`
-  font-size: 1.3rem;
+  display: inline-block;
+  font-size: 0.8rem;
   font-style: normal;
-  font-weight: 600;
-  opacity: 0.9;
-  
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 2rem;
+
   @media (max-width: 480px) {
-    font-size: 1.1rem;
+    font-size: 0.75rem;
   }
 `

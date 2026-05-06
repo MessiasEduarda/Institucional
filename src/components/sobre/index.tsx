@@ -219,21 +219,13 @@ export default function Sobre() {
           </HeroContent>
         </Hero>
 
-        {/* Stats Section - NÚMEROS ANIMADOS */}
-        <StatsSection>
-          <AnimatedStatCard endNumber={18} label="Anos de História" suffix="+" />
-          <AnimatedStatCard endNumber={3500} label="Alunos Formados" suffix="+" />
-          <AnimatedStatCard endNumber={96} label="Satisfação das Famílias" suffix="%" />
-          <AnimatedStatCard endNumber={120} label="Colaboradores" suffix="+" />
-        </StatsSection>
-
         {/* História */}
         <Section>
-          <SectionTitle>Nossa História</SectionTitle>
+          <SectionTitle>Nossa Trajetória</SectionTitle>
           <SectionSubtitle>
-            Uma jornada de dedicação, inovação e compromisso com a educação de excelência
+            Uma escola pública enraizada na Cidade Tiradentes, formando cidadãos da Zona Leste de São Paulo
           </SectionSubtitle>
-          
+
           <Grid>
             <Card>
               <CardIcon>
@@ -242,14 +234,15 @@ export default function Sobre() {
                   <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
                 </svg>
               </CardIcon>
-              <CardTitle>Origens e Fundação</CardTitle>
+              <CardTitle>Raízes na Comunidade</CardTitle>
               <CardDescription>
-                Fundada em 1999 por educadores visionários, a E.E Maria Antonieta nasceu 
-                do sonho de oferecer educação transformadora e acessível. Iniciamos com 
-                apenas 50 alunos e uma equipe de 8 professores dedicados.
+                Situada na Rua Rafael Della Mônica, 300, no bairro Cidade Tiradentes, a escola
+                leva o nome de Maria Antonieta Ferraz em homenagem a uma bibliotecária dedicada
+                à cultura e à leitura. Nossa Associação de Pais e Mestres existe desde março
+                de 1987, refletindo décadas de parceria com as famílias da região.
               </CardDescription>
             </Card>
-            
+
             <Card>
               <CardIcon>
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3F693B" strokeWidth="1.5">
@@ -257,14 +250,15 @@ export default function Sobre() {
                   <polyline points="12 6 12 12 16 14"/>
                 </svg>
               </CardIcon>
-              <CardTitle>Crescimento e Expansão</CardTitle>
+              <CardTitle>Atendimento e Estrutura</CardTitle>
               <CardDescription>
-                Ao longo dos anos, expandimos nossa infraestrutura e metodologia de ensino. 
-                Em 2010, inauguramos nosso campus atual com laboratórios modernos, biblioteca 
-                e áreas esportivas completas.
+                Atendemos alunos distribuídos no Ensino Fundamental II e Ensino
+                Médio. Contamos com quadra esportiva,
+                sala de leitura com biblioteca, laboratório de informática com internet e
+                refeições fornecidas diariamente.
               </CardDescription>
             </Card>
-            
+
             <Card>
               <CardIcon>
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3F693B" strokeWidth="1.5">
@@ -272,93 +266,15 @@ export default function Sobre() {
                   <path d="M2 17l10 5 10-5"/>
                 </svg>
               </CardIcon>
-              <CardTitle>Inovação Pedagógica</CardTitle>
+              <CardTitle>Educação Integral</CardTitle>
               <CardDescription>
-                Sempre à frente, em 2015 implementamos o programa bilíngue e em 2018 
-                integramos tecnologia e robótica ao currículo, preparando nossos alunos 
-                para os desafios do século XXI.
+                Com um corpo docente formado por excelentes professores, a escola desenvolve projetos
+                interdisciplinares que conectam diferentes saberes, como a reinterpretação
+                de obras literárias em todas as disciplinas. Também oferece modalidades
+                de educação profissional, ampliando as perspectivas dos nossos estudantes.
               </CardDescription>
             </Card>
           </Grid>
-        </Section>
-
-        {/* Timeline */}
-        <TimelineSection>
-          <SectionTitle>Marcos Históricos</SectionTitle>
-          <SectionSubtitle>
-            Principais conquistas ao longo de nossa trajetória
-          </SectionSubtitle>
-          
-          <TimelineContainer>
-            <TimelineItem>
-              <TimelineYear>1999</TimelineYear>
-              <TimelineContent>
-                <TimelineTitle>Fundação</TimelineTitle>
-                <TimelineDescription>
-                  Inauguração da escola com Educação Infantil e Ensino Fundamental I
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-            
-            <TimelineItem>
-              <TimelineYear>2005</TimelineYear>
-              <TimelineContent>
-                <TimelineTitle>Primeira Turma de Ensino Médio</TimelineTitle>
-                <TimelineDescription>
-                  Expansão para o Ensino Médio com excelentes resultados no ENEM
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-            
-            <TimelineItem>
-              <TimelineYear>2010</TimelineYear>
-              <TimelineContent>
-                <TimelineTitle>Novo Campus</TimelineTitle>
-                <TimelineDescription>
-                  Inauguração das novas instalações com infraestrutura de ponta
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-            
-            <TimelineItem>
-              <TimelineYear>2015</TimelineYear>
-              <TimelineContent>
-                <TimelineTitle>Programa Bilíngue</TimelineTitle>
-                <TimelineDescription>
-                  Implementação do ensino bilíngue português-inglês
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-            
-            <TimelineItem>
-              <TimelineYear>2018</TimelineYear>
-              <TimelineContent>
-                <TimelineTitle>Tecnologia e Inovação</TimelineTitle>
-                <TimelineDescription>
-                  Integração de robótica, programação e laboratórios maker
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-            
-            <TimelineItem>
-              <TimelineYear>2024</TimelineYear>
-              <TimelineContent>
-                <TimelineTitle>Certificações Internacionais</TimelineTitle>
-                <TimelineDescription>
-                  Reconhecimento internacional em qualidade educacional
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-          </TimelineContainer>
-        </TimelineSection>
-
-        <Section style={{ padding: '3rem 2rem' }}>
-          <ExternalLinks
-            title="Nossa Rede Institucional"
-            subtitle="Órgãos e entidades que integram a rede pública de ensino"
-            show={['seduc', 'ure', 'govestadual']}
-            columns={3}
-          />
         </Section>
 
         {/* Missão, Visão e Valores */}
@@ -476,24 +392,13 @@ export default function Sobre() {
           </CarouselWrapper>
         </TeamSection>
 
-        {/* Quote Inspiradora */}
-        <QuoteSection>
-          <QuoteContent>
-            <QuoteText>
-              &quot;Educação não transforma o mundo. Educação muda as pessoas. 
-              Pessoas transformam o mundo.&quot;
-            </QuoteText>
-            <QuoteAuthor>Paulo Freire</QuoteAuthor>
-          </QuoteContent>
-        </QuoteSection>
-
         {/* Diferenciais */}
         <Section style={{ background: '#f8f9fa' }}>
           <SectionTitle>O Que Nos Torna Únicos</SectionTitle>
           <SectionSubtitle>
             Diferenciais que fazem da Maria Antonieta uma escola especial
           </SectionSubtitle>
-          
+
           <Grid>
             <Card>
               <CardIcon>
@@ -506,11 +411,11 @@ export default function Sobre() {
               </CardIcon>
               <CardTitle>Acompanhamento Individualizado</CardTitle>
               <CardDescription>
-                Cada aluno recebe atenção personalizada através de tutoria, orientação 
+                Cada aluno recebe atenção personalizada através de tutoria, orientação
                 pedagógica e psicológica, respeitando seu ritmo e potencial único.
               </CardDescription>
             </Card>
-            
+
             <Card>
               <CardIcon>
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3F693B" strokeWidth="1.5">
@@ -519,13 +424,14 @@ export default function Sobre() {
                   <path d="M2 12h20"/>
                 </svg>
               </CardIcon>
-              <CardTitle>Visão Global</CardTitle>
+              <CardTitle>Visão de Mundo</CardTitle>
               <CardDescription>
-                Programa bilíngue, intercâmbios culturais e certificações internacionais 
-                que preparam nossos alunos para um mundo sem fronteiras.
+                Incentivamos nossos alunos a conhecerem realidades além da sua comunidade
+                por meio de debates, acesso a conteúdos digitais, projetos culturais e
+                atividades que ampliam horizontes sem sair do bairro.
               </CardDescription>
             </Card>
-            
+
             <Card>
               <CardIcon>
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3F693B" strokeWidth="1.5">
@@ -534,11 +440,11 @@ export default function Sobre() {
               </CardIcon>
               <CardTitle>Educação Financeira</CardTitle>
               <CardDescription>
-                Desenvolvemos consciência financeira desde cedo, preparando jovens para 
+                Desenvolvemos consciência financeira desde cedo, preparando jovens para
                 decisões econômicas responsáveis e empreendedorismo.
               </CardDescription>
             </Card>
-            
+
             <Card>
               <CardIcon>
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3F693B" strokeWidth="1.5">
@@ -549,11 +455,11 @@ export default function Sobre() {
               </CardIcon>
               <CardTitle>Projetos Interdisciplinares</CardTitle>
               <CardDescription>
-                Aprendizagem conectada com a realidade através de projetos que integram 
+                Aprendizagem conectada com a realidade através de projetos que integram
                 diferentes áreas do conhecimento e desenvolvem pensamento crítico.
               </CardDescription>
             </Card>
-            
+
             <Card>
               <CardIcon>
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3F693B" strokeWidth="1.5">
@@ -564,11 +470,11 @@ export default function Sobre() {
               </CardIcon>
               <CardTitle>Responsabilidade Social</CardTitle>
               <CardDescription>
-                Projetos comunitários e ações sociais que desenvolvem empatia, cidadania 
+                Projetos comunitários e ações sociais que desenvolvem empatia, cidadania
                 e compromisso com a transformação social.
               </CardDescription>
             </Card>
-            
+
             <Card>
               <CardIcon>
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3F693B" strokeWidth="1.5">
@@ -577,12 +483,23 @@ export default function Sobre() {
               </CardIcon>
               <CardTitle>Parceria com Famílias</CardTitle>
               <CardDescription>
-                Comunicação transparente e participação ativa das famílias no processo 
+                Comunicação transparente e participação ativa das famílias no processo
                 educativo através de reuniões, workshops e plataformas digitais.
               </CardDescription>
             </Card>
           </Grid>
         </Section>
+
+        {/* Quote Inspiradora */}
+        <QuoteSection>
+          <QuoteContent>
+            <QuoteText>
+              &quot;Educação não transforma o mundo. Educação muda as pessoas.
+              Pessoas transformam o mundo.&quot;
+            </QuoteText>
+            <QuoteAuthor>Paulo Freire</QuoteAuthor>
+          </QuoteContent>
+        </QuoteSection>
       </Container>
       <Footer />
     </>
