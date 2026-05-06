@@ -9,7 +9,6 @@ export default function StyledComponentsRegistry({
 }: {
   children: React.ReactNode
 }) {
-  // CORREÇÃO: usar useMemo para evitar recriar o sheet
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet())
 
   useServerInsertedHTML(() => {

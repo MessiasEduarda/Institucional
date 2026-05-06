@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Navbar from '@/components/navbar'
 import SucessModal from '@/components/ui/modals/sucessModal'
-import Footer from '@/components/footer'
+import Footer from '@/components/Footer'
 import { 
   Container, 
   Hero, 

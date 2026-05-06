@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from '@/components/navbar'
-import Footer from '@/components/footer'
+import Footer from '@/components/Footer'
 import ExternalLinks from '@/components/ExternalLinks'
 import { 
   Container, 
