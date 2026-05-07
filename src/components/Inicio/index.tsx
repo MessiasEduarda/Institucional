@@ -288,7 +288,7 @@ export default function Inicio() {
         <ImageSection>
           <ImageContent>
             <img 
-              src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=800&fit=crop" 
+              src="/foto1.jpeg" 
               alt="Campus da escola"
             />
           </ImageContent>
@@ -320,7 +320,7 @@ export default function Inicio() {
           <Grid $columns={3}>
             <Card>
               <img 
-                src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop" 
+                src="/foto2.jpg" 
                 alt="Anos Finais"
                 style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1.5rem' }}
               />
@@ -332,7 +332,7 @@ export default function Inicio() {
             </Card>
             <Card>
               <img 
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop" 
+                src="/foto3.jpg" 
                 alt="Ensino Médio"
                 style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1.5rem' }}
               />
@@ -344,7 +344,7 @@ export default function Inicio() {
             </Card>
             <Card>
               <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop" 
+                src="/foto4.jpg" 
                 alt="Ensino Técnico"
                 style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1.5rem' }}
               />
