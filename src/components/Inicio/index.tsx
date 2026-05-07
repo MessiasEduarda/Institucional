@@ -233,7 +233,7 @@ export default function Inicio() {
               </CardIcon>
               <CardTitle>Infraestrutura Moderna</CardTitle>
               <CardDescription>
-                Instalações de ponta com salas climatizadas, laboratórios equipados, 
+                Instalações de ponta com salas confortáveis, laboratórios equipados, 
                 biblioteca completa, áreas esportivas e tecnologia integrada em 
                 todos os ambientes de aprendizagem.
               </CardDescription>
@@ -251,7 +251,7 @@ export default function Inicio() {
               <CardDescription>
                 Desenvolvimento acadêmico aliado à formação de valores éticos, 
                 cidadania, responsabilidade social e competências socioemocionais 
-                essenciais para o século XXI.
+                essenciais.
               </CardDescription>
             </Card>
             <Card>
@@ -295,21 +295,21 @@ export default function Inicio() {
           <TextContent>
             <h2>Nossa História e Missão</h2>
             <p>
-              Fundada em 1999, a Escola Futuro nasceu do sonho de transformar a 
-              educação brasileira. Ao longo de mais de duas décadas, nos consolidamos 
-              como referência em ensino de excelência, combinando tradição acadêmica 
-              com inovação pedagógica.
+              Localizada na Rua Rafael Della Mônica, 300, no bairro Cidade Tiradentes,
+              Zona Leste de São Paulo, a E.E. Bibliotecária Maria Antonieta Ferraz é uma
+              escola estadual com décadas de história na comunidade. Nosso nome homenageia
+              uma bibliotecária dedicada à cultura e à leitura, e nossa Associação de Pais
+              e Mestres existe desde março de 1987.
             </p>
             <p>
-              Nossa missão é formar cidadãos éticos, críticos e preparados para os 
-              desafios do século XXI. Acreditamos que a educação vai além dos conteúdos 
-              curriculares – ela deve desenvolver habilidades socioemocionais, 
-              criatividade e consciência cidadã.
+              Atendemos alunos nos segmentos de Ensino Fundamental II,
+              Ensino Médio e Ensino Técnico, com um corpo docente de
+              professores comprometidos com o desenvolvimento de cada estudante.
             </p>
             <p>
-              Com uma equipe de educadores altamente qualificados e uma infraestrutura 
-              moderna, oferecemos um ambiente acolhedor onde cada aluno é incentivado 
-              a alcançar seu máximo potencial.
+              Nossa missão é oferecer educação pública de qualidade, formando cidadãos
+              críticos e conscientes. Acreditamos que a escola é um espaço de
+              transformação real para os jovens da Cidade Tiradentes e da Zona Leste.
             </p>
           </TextContent>
         </ImageSection>
