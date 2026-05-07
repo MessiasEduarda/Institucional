@@ -199,7 +199,7 @@ export default function Inicio() {
         <Section style={{ background: '#f8f9fa', padding: '3rem 2rem' }}>
           <ExternalLinks
             title="Acesso Rápido"
-            subtitle="Links úteis para alunos, responsáveis e comunidade escolar"
+            subtitle="Links úteis, responsáveis e comunidade escolar"
             show={['sptrans', 'govbr', 'govestadual', 'instagram']}
             columns={4}
           />

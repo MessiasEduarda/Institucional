@@ -298,9 +298,19 @@ export default function Alunos() {
           </WelcomeContent>
         </WelcomeSection>
 
+        {/* Links Úteis para Alunos */}
+        <Section style={{ background: '#f0f7f0', padding: '3rem 2rem' }}>
+          <ExternalLinks
+            title="Links úteis"
+            subtitle="Acesse os principais serviços e recursos da rede pública"
+            show={['apostilas', 'salafuturo', 'sptrans', 'cras', 'universidades', 'instagram']}
+            columns={3}
+          />
+        </Section>
+
         {/* Tab Section */}
         <TabSection>
-          <SectionTitle>Informações por Segmento</SectionTitle>
+          <SectionTitle>Informações por segmento</SectionTitle>
           <SectionSubtitle>
             Saiba mais sobre cada etapa de ensino oferecida pela escola
           </SectionSubtitle>
@@ -508,65 +518,9 @@ export default function Alunos() {
           </TabContent>
         </TabSection>
 
-        {/* Activities Carousel */}
-        <ActivitiesSection>
-          <SectionTitle>Atividades na Escola</SectionTitle>
-          <SectionSubtitle>
-            Conheça o que acontece no dia a dia da nossa escola
-          </SectionSubtitle>
-          
-          <ActivityCarousel>
-            {activities.map((activity, index) => (
-              <ActivitySlide key={activity.id} $active={currentActivity === index}>
-                <ActivityImage>
-                  <img src={activity.image} alt={activity.title} />
-                </ActivityImage>
-                <ActivityInfo>
-                  <ActivityCategory>{activity.category}</ActivityCategory>
-                  <ActivityTitle>{activity.title}</ActivityTitle>
-                  <ActivityDescription>{activity.description}</ActivityDescription>
-                </ActivityInfo>
-              </ActivitySlide>
-            ))}
-            
-            <CarouselControls>
-              <CarouselButton onClick={prevActivity} $position="left">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <polyline points="15 18 9 12 15 6"/>
-                </svg>
-              </CarouselButton>
-              <CarouselButton onClick={nextActivity} $position="right">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <polyline points="9 18 15 12 9 6"/>
-                </svg>
-              </CarouselButton>
-            </CarouselControls>
-
-            <CarouselIndicators>
-              {activities.map((_, index) => (
-                <CarouselDot
-                  key={index}
-                  $active={currentActivity === index}
-                  onClick={() => goToActivity(index)}
-                />
-              ))}
-            </CarouselIndicators>
-          </ActivityCarousel>
-        </ActivitiesSection>
-
-        {/* Links Úteis para Alunos */}
-        <Section style={{ background: '#f0f7f0', padding: '3rem 2rem' }}>
-          <ExternalLinks
-            title="Links Úteis para Alunos"
-            subtitle="Acesse os principais serviços e recursos da rede pública"
-            show={['apostilas', 'salafuturo', 'sptrans', 'cras', 'universidades', 'instagram']}
-            columns={3}
-          />
-        </Section>
-
         {/* Student Life */}
         <StudentLifeSection>
-          <SectionTitle>Vida na Escola</SectionTitle>
+          <SectionTitle>Vida na escola</SectionTitle>
           <SectionSubtitle>
             Momentos e experiências que fazem parte da nossa rotina escolar
           </SectionSubtitle>
@@ -580,7 +534,7 @@ export default function Alunos() {
                 />
               </LifeImageContainer>
               <LifeContent>
-                <LifeTitle>Eventos e Datas Comemorativas</LifeTitle>
+                <LifeTitle>Eventos e datas comemorativas</LifeTitle>
                 <LifeDescription>
                   Festa junina, semana da consciência negra, dia do estudante e outras 
                   datas importantes que fazem parte do calendário escolar e fortalecem 
@@ -597,7 +551,7 @@ export default function Alunos() {
                 />
               </LifeImageContainer>
               <LifeContent>
-                <LifeTitle>Visitas Pedagógicas</LifeTitle>
+                <LifeTitle>Visitas pedagógicas</LifeTitle>
                 <LifeDescription>
                   Saídas de campo a museus e espaços culturais da cidade, 
                   organizadas pelos professores para complementar o conteúdo 
@@ -614,7 +568,7 @@ export default function Alunos() {
                 />
               </LifeImageContainer>
               <LifeContent>
-                <LifeTitle>Grêmio Estudantil</LifeTitle>
+                <LifeTitle>Grêmio estudantil</LifeTitle>
                 <LifeDescription>
                   Espaço de participação dos alunos na vida da escola. O grêmio 
                   representa os estudantes, organiza atividades e contribui com 
@@ -632,7 +586,7 @@ export default function Alunos() {
                 />
               </LifeImageContainer>
               <LifeContent>
-                <LifeTitle>Campeonatos Interescolares</LifeTitle>
+                <LifeTitle>Campeonatos interescolares</LifeTitle>
                 <LifeDescription>
                   Competições esportivas entre escolas da rede pública em modalidades 
                   como futsal, vôlei e basquete. Os campeonatos promovem fair play, 
@@ -643,94 +597,6 @@ export default function Alunos() {
 
           </LifeGrid>
         </StudentLifeSection>
-
-        {/* Support Section */}
-        <SupportSection>
-          <SectionTitle>Com Quem Falar</SectionTitle>
-          <SectionSubtitle>
-            Nossa equipe está pronta para te ouvir e ajudar no que for preciso
-          </SectionSubtitle>
-          
-          <SupportContainer>
-            <SupportCard>
-              <SupportIconWrapper>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-              </SupportIconWrapper>
-              <SupportTitle>Coordenação Pedagógica</SupportTitle>
-              <SupportDescription>
-                Dúvidas sobre notas, frequência, comportamento ou qualquer 
-                questão relacionada à sua vida escolar. A coordenação 
-                está disponível para orientar alunos e responsáveis.
-              </SupportDescription>
-              <SupportContact>Secretaria da escola</SupportContact>
-            </SupportCard>
-
-            <SupportCard>
-              <SupportIconWrapper>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                </svg>
-              </SupportIconWrapper>
-              <SupportTitle>Sala de Recurso</SupportTitle>
-              <SupportDescription>
-                Atendimento educacional especializado para alunos com necessidades 
-                específicas. A sala de recurso garante o suporte necessário 
-                para a inclusão e o aprendizado de todos.
-              </SupportDescription>
-              <SupportContact>Sala de Recurso Multifuncional</SupportContact>
-            </SupportCard>
-
-            <SupportCard>
-              <SupportIconWrapper>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-              </SupportIconWrapper>
-              <SupportTitle>Diretoria da Escola</SupportTitle>
-              <SupportDescription>
-                Para questões mais sérias ou que precisam da atenção da gestão 
-                escolar, a diretoria atende alunos e responsáveis 
-                presencialmente na escola.
-              </SupportDescription>
-              <SupportContact>Presencialmente na escola</SupportContact>
-            </SupportCard>
-          </SupportContainer>
-        </SupportSection>
-
-        {/* Testimonials */}
-        <TestimonialsSection>
-          <SectionTitle>O Que os Alunos Dizem</SectionTitle>
-          <SectionSubtitle>
-            Veja o que nossos estudantes têm a dizer sobre a experiência na escola
-          </SectionSubtitle>
-          
-          <TestimonialGrid>
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard key={index}>
-                <TestimonialHeader>
-                  <TestimonialAvatar>
-                    <img src={testimonial.avatar} alt={testimonial.name} />
-                  </TestimonialAvatar>
-                  <TestimonialInfo>
-                    <TestimonialName>{testimonial.name}</TestimonialName>
-                    <TestimonialGrade>{testimonial.grade}</TestimonialGrade>
-                  </TestimonialInfo>
-                </TestimonialHeader>
-                <TestimonialText>{testimonial.text}</TestimonialText>
-                <TestimonialRating>
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i}>⭐</span>
-                  ))}
-                </TestimonialRating>
-              </TestimonialCard>
-            ))}
-          </TestimonialGrid>
-        </TestimonialsSection>
 
         {/* FAQ */}
         <FAQSection>
