@@ -242,6 +242,16 @@ export default function Alunos() {
           </HeroContent>
         </Hero>
 
+        {/* Links Úteis para Alunos */}
+        <Section style={{ background: '#ffffff', padding: '3rem 2rem' }}>
+          <ExternalLinks
+            title="Links úteis"
+            subtitle="Acesse os principais serviços e recursos da rede pública"
+            show={['apostilas', 'salafuturo', 'sptrans', 'cras', 'universidades', 'instagram']}
+            columns={3}
+          />
+        </Section>
+
         {/* Welcome Section */}
         <WelcomeSection>
           <WelcomeImage>
@@ -297,16 +307,6 @@ export default function Alunos() {
             </WelcomeFeatures>
           </WelcomeContent>
         </WelcomeSection>
-
-        {/* Links Úteis para Alunos */}
-        <Section style={{ background: '#f0f7f0', padding: '3rem 2rem' }}>
-          <ExternalLinks
-            title="Links úteis"
-            subtitle="Acesse os principais serviços e recursos da rede pública"
-            show={['apostilas', 'salafuturo', 'sptrans', 'cras', 'universidades', 'instagram']}
-            columns={3}
-          />
-        </Section>
 
         {/* Tab Section */}
         <TabSection>
@@ -577,7 +577,6 @@ export default function Alunos() {
               </LifeContent>
             </LifeCard>
 
-            {/* ← CARD ATUALIZADO: Campeonatos Interescolares */}
             <LifeCard>
               <LifeImageContainer>
                 <img 

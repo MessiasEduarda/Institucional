@@ -222,7 +222,6 @@ export const SectionSubtitle = styled.p`
   }
 `
 
-// Contact Grid
 export const ContactGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -315,184 +314,6 @@ export const ContactLink = styled.a`
   }
 `
 
-// Form Section
-export const FormSection = styled.section`
-  padding: 5rem 4rem;
-  padding-left: calc(80px + 4rem);
-  background: white;
-  
-  @media (max-width: 1200px) {
-    padding: 4rem 3rem;
-    padding-left: calc(80px + 3rem);
-  }
-  
-  @media (max-width: 968px) {
-    padding: 3rem 2rem;
-    padding-left: calc(80px + 2rem);
-  }
-  
-  @media (max-width: 768px) {
-    padding-left: 2rem;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 2.5rem 1.5rem;
-  }
-`
-
-export const FormContainer = styled.form`
-  max-width: 900px;
-  margin: 0 auto;
-  background: #f8f9fa;
-  padding: 3rem;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  
-  @media (max-width: 768px) {
-    padding: 2.5rem 2rem;
-    border-radius: 16px;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 2rem 1.5rem;
-  }
-`
-
-export const FormGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-bottom: 2rem;
-  
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-`
-
-export const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-`
-
-export const Label = styled.label`
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #333;
-  
-  @media (max-width: 480px) {
-    font-size: 1rem;
-  }
-`
-
-export const Input = styled.input`
-  padding: 1rem 1.2rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  background: white;
-  
-  &:focus {
-    outline: none;
-    border-color: #3F693B;
-    box-shadow: 0 0 0 3px rgba(63, 105, 59, 0.1);
-  }
-  
-  &::placeholder {
-    color: #aaa;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 0.9rem 1rem;
-    font-size: 0.95rem;
-  }
-`
-
-export const Select = styled.select`
-  padding: 1rem 1.2rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  background: white;
-  cursor: pointer;
-  
-  &:focus {
-    outline: none;
-    border-color: #3F693B;
-    box-shadow: 0 0 0 3px rgba(63, 105, 59, 0.1);
-  }
-  
-  @media (max-width: 480px) {
-    padding: 0.9rem 1rem;
-    font-size: 0.95rem;
-  }
-`
-
-export const Textarea = styled.textarea`
-  padding: 1rem 1.2rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-family: inherit;
-  resize: vertical;
-  min-height: 120px;
-  transition: all 0.3s ease;
-  background: white;
-  
-  &:focus {
-    outline: none;
-    border-color: #3F693B;
-    box-shadow: 0 0 0 3px rgba(63, 105, 59, 0.1);
-  }
-  
-  &::placeholder {
-    color: #aaa;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 0.9rem 1rem;
-    font-size: 0.95rem;
-  }
-`
-
-export const SubmitButton = styled.button`
-  background: linear-gradient(135deg, #3F693B 0%, #5a8a54 100%);
-  color: white;
-  padding: 1.2rem 3rem;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.15rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  margin: 2rem auto 0;
-  box-shadow: 0 10px 30px rgba(63, 105, 59, 0.3);
-  
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(63, 105, 59, 0.4);
-  }
-  
-  &:active {
-    transform: translateY(-1px);
-  }
-  
-  @media (max-width: 480px) {
-    padding: 1rem 2.5rem;
-    font-size: 1.05rem;
-    width: 100%;
-    margin-top: 1.5rem;
-  }
-`
-
-// Map Section
 export const MapSection = styled.section`
   padding: 5rem 4rem;
   padding-left: calc(80px + 4rem);
@@ -587,7 +408,6 @@ export const InfoText = styled.p`
   }
 `
 
-// Social Section
 export const SocialSection = styled.section`
   padding: 5rem 4rem;
   padding-left: calc(80px + 4rem);
@@ -679,7 +499,6 @@ export const SocialHandle = styled.div`
   }
 `
 
-// FAQ Section
 export const FAQSection = styled.section`
   padding: 5rem 4rem;
   padding-left: calc(80px + 4rem);

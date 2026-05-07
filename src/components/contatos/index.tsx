@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Navbar from '@/components/navbar'
-import SucessModal from '@/components/ui/modals/sucessModal'
 import Footer from '@/components/Footer'
 import { 
   Container, 
@@ -20,15 +19,6 @@ import {
   ContactTitle,
   ContactInfo,
   ContactLink,
-  FormSection,
-  FormContainer,
-  FormGrid,
-  FormGroup,
-  Label,
-  Input,
-  Select,
-  Textarea,
-  SubmitButton,
   MapSection,
   MapContainer,
   MapOverlay,
@@ -74,100 +64,14 @@ const faqs = [
 export default function Contatos() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
   const [showMapCard, setShowMapCard] = useState(true)
-  const [enviando, setEnviando] = useState(false)
-  const [successModalOpen, setSuccessModalOpen] = useState(false)
-  const [formData, setFormData] = useState({
-    nome: '',
-    email: '',
-    telefone: '',
-    assunto: '',
-    mensagem: ''
-  })
 
   const toggleFAQ = (index: number) => {
     setOpenFAQ(openFAQ === index ? null : index)
   }
 
-  const formatarTelefone = (valor: string) => {
-    const numeros = valor.replace(/\D/g, '')
-    const numeroLimitado = numeros.slice(0, 11)
-    
-    if (numeroLimitado.length <= 2) {
-      return numeroLimitado
-    } else if (numeroLimitado.length <= 6) {
-      return `(${numeroLimitado.slice(0, 2)}) ${numeroLimitado.slice(2)}`
-    } else if (numeroLimitado.length <= 10) {
-      return `(${numeroLimitado.slice(0, 2)}) ${numeroLimitado.slice(2, 6)}-${numeroLimitado.slice(6)}`
-    } else {
-      return `(${numeroLimitado.slice(0, 2)}) ${numeroLimitado.slice(2, 7)}-${numeroLimitado.slice(7, 11)}`
-    }
-  }
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    
-    if (name === 'telefone') {
-      const telefoneFormatado = formatarTelefone(value)
-      setFormData(prev => ({
-        ...prev,
-        [name]: telefoneFormatado
-      }))
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        [name]: value
-      }))
-    }
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    if (!formData.nome || !formData.email || !formData.telefone || !formData.assunto || !formData.mensagem) {
-      alert('Por favor, preencha todos os campos obrigatórios!')
-      return
-    }
-
-    setEnviando(true)
-
-    try {
-      const res = await fetch('/api/contato', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      })
-
-      const data = await res.json()
-
-      if (data.ok) {
-        setSuccessModalOpen(true)
-        setFormData({
-          nome: '',
-          email: '',
-          telefone: '',
-          assunto: '',
-          mensagem: ''
-        })
-      } else {
-        alert('Erro ao enviar a mensagem. Tente novamente.')
-      }
-    } catch {
-      alert('Erro ao enviar. Verifique sua conexão e tente novamente.')
-    } finally {
-      setEnviando(false)
-    }
-  }
-
   return (
     <>
       <Navbar />
-
-      <SucessModal
-        isOpen={successModalOpen}
-        title="Mensagem Enviada com Sucesso!"
-        message="Recebemos sua mensagem e entraremos em contato em breve. Obrigado por falar conosco!"
-        onClose={() => setSuccessModalOpen(false)}
-      />
 
       <Container>
         {/* Hero Section */}
@@ -270,108 +174,6 @@ export default function Contatos() {
             </ContactCard>
           </ContactGrid>
         </Section>
-
-        {/* Formulário de Contato */}
-        <FormSection>
-          <SectionTitle>Envie sua Mensagem</SectionTitle>
-          <SectionSubtitle>
-            Preencha todos os campos abaixo e entraremos em contato o mais breve possível
-          </SectionSubtitle>
-          
-          <FormContainer onSubmit={handleSubmit}>
-            <FormGrid>
-              <FormGroup>
-                <Label htmlFor="nome">Nome Completo *</Label>
-                <Input 
-                  type="text" 
-                  id="nome" 
-                  name="nome"
-                  value={formData.nome}
-                  onChange={handleInputChange}
-                  placeholder="Digite seu nome completo"
-                  required 
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Label htmlFor="email">E-mail *</Label>
-                <Input 
-                  type="email" 
-                  id="email" 
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="seu@email.com"
-                  required 
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Label htmlFor="telefone">Telefone *</Label>
-                <Input 
-                  type="tel" 
-                  id="telefone" 
-                  name="telefone"
-                  value={formData.telefone}
-                  onChange={handleInputChange}
-                  placeholder="(11) 91234-5678"
-                  required 
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Label htmlFor="assunto">Assunto *</Label>
-                <Select 
-                  id="assunto" 
-                  name="assunto"
-                  value={formData.assunto}
-                  onChange={handleInputChange}
-                  required
-                >
-                  <option value="">Selecione um assunto</option>
-                  <option value="matricula">Informações sobre Matrícula</option>
-                  <option value="visita">Agendar Visita</option>
-                  <option value="pedagogico">Questões Pedagógicas</option>
-                  <option value="financeiro">Financeiro</option>
-                  <option value="outros">Outros</option>
-                </Select>
-              </FormGroup>
-            </FormGrid>
-
-            <FormGroup>
-              <Label htmlFor="mensagem">Mensagem *</Label>
-              <Textarea 
-                id="mensagem" 
-                name="mensagem"
-                value={formData.mensagem}
-                onChange={handleInputChange}
-                placeholder="Digite sua mensagem aqui..."
-                rows={6}
-                required
-              />
-            </FormGroup>
-
-            <p style={{ 
-              textAlign: 'center', 
-              color: '#666', 
-              fontSize: '0.95rem', 
-              marginTop: '1rem',
-              fontStyle: 'italic'
-            }}>
-              * Todos os campos são obrigatórios
-            </p>
-
-            <SubmitButton type="submit" disabled={enviando}>
-              {enviando ? 'Enviando...' : 'Enviar Mensagem'}
-              {!enviando && (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="22" y1="2" x2="11" y2="13"/>
-                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                </svg>
-              )}
-            </SubmitButton>
-          </FormContainer>
-        </FormSection>
 
         {/* Mapa */}
         <MapSection>
