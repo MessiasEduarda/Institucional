@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
-const GREEN_DARK = '#2d4f2a'
-const GREEN_MID = '#3F693B'
-const GREEN_LIGHT = '#5a8a54'
+const GREEN_DARK = '#222222'
+const GREEN_MID = '#dddddd'
+const GREEN_LIGHT = '#dddddd'
 
 const NAVBAR_WIDTH = '80px'
 
 export const FooterWrapper = styled.footer`
-  background: linear-gradient(160deg, ${GREEN_DARK} 0%, #1e3b1b 100%);
+  background: linear-gradient(160deg, ${GREEN_DARK} 0%, #222222 100%);
   color: white;
   width: 100%;
   padding-left: ${NAVBAR_WIDTH};
@@ -52,31 +52,6 @@ export const FooterBrand = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-`
-
-export const FooterLogo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-`
-
-export const FooterLogoImage = styled.div`
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.12);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 `
 
 export const FooterSchoolName = styled.div`

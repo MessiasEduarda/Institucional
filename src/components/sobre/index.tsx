@@ -71,7 +71,6 @@ function useCountAnimation(end: number, duration: number = 2000, shouldStart: bo
       const progress = timestamp - startTime
       const percentage = Math.min(progress / duration, 1)
       
-      // Easing function para suavizar a animação
       const easeOutQuart = 1 - Math.pow(1 - percentage, 4)
       const newCount = Math.floor(end * easeOutQuart)
       
@@ -169,7 +168,6 @@ export default function Sobre() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
-  // Auto-play do carrossel
   useEffect(() => {
     if (!isAutoPlaying) return
 
@@ -331,7 +329,18 @@ export default function Sobre() {
           </Grid>
         </ValuesSection>
 
-        {/* Equipe de Gestão - CARROSSEL PROFISSIONAL */}
+        {/* Quote Inspiradora — logo após Missão, Visão e Valores */}
+        <QuoteSection>
+          <QuoteContent>
+            <QuoteText>
+              &quot;Educação não transforma o mundo. Educação muda as pessoas.
+              Pessoas transformam o mundo.&quot;
+            </QuoteText>
+            <QuoteAuthor>Paulo Freire</QuoteAuthor>
+          </QuoteContent>
+        </QuoteSection>
+
+        {/* Equipe de Gestão */}
         <TeamSection>
           <SectionTitle>Equipe Gestora</SectionTitle>
           <SectionSubtitle>
@@ -490,16 +499,6 @@ export default function Sobre() {
           </Grid>
         </Section>
 
-        {/* Quote Inspiradora */}
-        <QuoteSection>
-          <QuoteContent>
-            <QuoteText>
-              &quot;Educação não transforma o mundo. Educação muda as pessoas.
-              Pessoas transformam o mundo.&quot;
-            </QuoteText>
-            <QuoteAuthor>Paulo Freire</QuoteAuthor>
-          </QuoteContent>
-        </QuoteSection>
       </Container>
       <Footer />
     </>

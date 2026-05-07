@@ -5,8 +5,6 @@ import {
   FooterContainer,
   FooterTop,
   FooterBrand,
-  FooterLogo,
-  FooterLogoImage,
   FooterSchoolName,
   FooterSchoolSubtitle,
   FooterTagline,
@@ -37,15 +35,10 @@ export default function Footer() {
 
           {/* Brand / Logo */}
           <FooterBrand>
-            <FooterLogo>
-              <FooterLogoImage>
-                <img src="/logo.png" alt="Logo da Escola" />
-              </FooterLogoImage>
-              <div>
-                <FooterSchoolName>E.E. Bibliotecária Maria Antonieta Ferraz</FooterSchoolName>
-                <FooterSchoolSubtitle>Escola Estadual</FooterSchoolSubtitle>
-              </div>
-            </FooterLogo>
+            <div>
+              <FooterSchoolName>E.E. Bibliotecária Maria Antonieta Ferraz</FooterSchoolName>
+              <FooterSchoolSubtitle>Escola Estadual</FooterSchoolSubtitle>
+            </div>
             <FooterTagline>
               Educação pública de qualidade, comprometida com o aprendizado
               e o desenvolvimento de cada estudante de Cidade Tiradentes.
